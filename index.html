@@ -2,297 +2,534 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>IAM Roadmap - Thilaga</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>IAM Roadmap · Thilaga</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-[data-theme="light"]{--bg:#f4f6fb;--surface:#fff;--surface2:#f0f3fa;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--muted2:#475569;--hbg:#fff;--shadow:0 1px 4px rgba(0,0,0,0.07);--fbg:#fff;--sbg:#f8faff;--tcol:#1e40af;--scbg:#f8faff}
-[data-theme="dark"]{--bg:#0a0f1e;--surface:#111827;--surface2:#1a2235;--border:rgba(255,255,255,0.08);--text:#f0f4ff;--muted:#6b7a99;--muted2:#8896b3;--hbg:#0d1525;--shadow:0 1px 6px rgba(0,0,0,0.3);--fbg:#111827;--sbg:#1a2235;--tcol:#60a5fa;--scbg:#1a2235}
-:root{--acc:#4f8ef7;--acc2:#38d9a9;--p1:#4f8ef7;--p1b:rgba(79,142,247,0.13);--p2:#16a34a;--p2b:rgba(22,163,74,0.12);--p3:#9333ea;--p3b:rgba(147,51,234,0.12);--p4:#d97706;--p4b:rgba(217,119,6,0.12);--p5:#dc2626;--p5b:rgba(220,38,38,0.12);--r:13px;--rs:8px}
+[data-theme=light]{--bg:#f7f8fc;--surface:#ffffff;--surface2:#f0f3fa;--surface3:#e8edf8;--border:#dde3f0;--text:#0d1b2a;--muted:#5a6a85;--muted2:#3d4f6b;--hbg:#ffffff;--shadow:0 2px 20px rgba(13,27,42,0.07);--card-shadow:0 4px 24px rgba(13,27,42,0.06);--tcol:#1a3a6e;--scbg:#f0f4ff;--pill-shadow:0 2px 8px rgba(79,142,247,0.2)}
+[data-theme=dark]{--bg:#080e1c;--surface:#0f1a2e;--surface2:#162033;--surface3:#1c2a3f;--border:rgba(255,255,255,0.07);--text:#e8f0ff;--muted:#6b7fa3;--muted2:#8fa3c8;--hbg:#0a1220;--shadow:0 2px 20px rgba(0,0,0,0.4);--card-shadow:0 4px 24px rgba(0,0,0,0.35);--tcol:#60a5fa;--scbg:#162033;--pill-shadow:0 2px 8px rgba(79,142,247,0.15)}
+:root{--acc:#3b6fd4;--acc2:#0ea472;--p1:#3b6fd4;--p1b:rgba(59,111,212,0.1);--p2:#0ea472;--p2b:rgba(14,164,114,0.1);--p3:#7c3aed;--p3b:rgba(124,58,237,0.1);--p4:#c2710c;--p4b:rgba(194,113,12,0.1);--p5:#c0392b;--p5b:rgba(192,57,43,0.1);--r:16px;--rs:10px}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:90px;-webkit-font-smoothing:antialiased;transition:background 0.25s,color 0.25s}
-.header{background:var(--hbg);padding:10px 14px 0;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
-.htop{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.brand{display:flex;align-items:center;gap:7px}
-.bicon{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.bname{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
-.bsub{font-size:9px;color:var(--muted);margin-top:1px}
-.hright{display:flex;align-items:center;gap:6px}
-.pbadge{font-size:9px;font-weight:600;padding:3px 8px;border-radius:99px;background:rgba(79,142,247,0.12);color:var(--acc);border:1px solid rgba(79,142,247,0.25)}
-.tbtn2{width:28px;height:28px;border-radius:99px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
-.srow{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:7px}
-.stat{background:var(--surface2);border-radius:var(--rs);padding:6px 4px;text-align:center;border:1px solid var(--border)}
-.sv{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;line-height:1}
-.sl{font-size:9px;color:var(--muted);margin-top:2px}
-.sd .sv{color:var(--p2)}.sp .sv{color:var(--p4)}.sc .sv{color:var(--acc)}.ss .sv{color:var(--p5)}
-.prow{display:flex;align-items:center;gap:8px;padding-bottom:9px}
-.pt{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden}
-.pf{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width 0.5s ease;min-width:3px}
-.pl{font-size:9px;color:var(--muted);white-space:nowrap;font-family:'Syne',sans-serif}
-.fbar{background:var(--surface);padding:8px 14px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
-.fbar::-webkit-scrollbar{display:none}
-.fb{flex-shrink:0;padding:6px 12px;border-radius:99px;font-size:10px;font-weight:600;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.15s;font-family:'Manrope',sans-serif;white-space:nowrap}
-.fb[data-ph="0"].active{background:var(--acc);color:#fff;border-color:var(--acc)}
-.fb[data-ph="1"].active{background:var(--p1);color:#fff;border-color:var(--p1)}
-.fb[data-ph="2"].active{background:var(--p2);color:#fff;border-color:var(--p2)}
-.fb[data-ph="3"].active{background:var(--p3);color:#fff;border-color:var(--p3)}
-.fb[data-ph="4"].active{background:var(--p4);color:#fff;border-color:var(--p4)}
-.fb[data-ph="5"].active{background:var(--p5);color:#fff;border-color:var(--p5)}
-.sbar{background:var(--surface2);border-top:2px solid var(--border);border-bottom:2px solid var(--border);padding:8px 14px}
-.sticky-wrap{position:sticky;top:122px;z-index:90;background:var(--bg);}
-.swrap{position:relative}
-.sico{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:13px;pointer-events:none;opacity:0.45}
-.sinp{width:100%;padding:9px 12px 9px 34px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-size:12px;font-family:'Manrope',sans-serif;outline:none;transition:border-color 0.2s}
-.sinp:focus{border-color:var(--acc)}
-.sinp::placeholder{color:var(--muted)}
-.panel{display:none;padding:10px 14px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:90px;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+
+/* ── MASTHEAD ── */
+.masthead{background:var(--hbg);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.masthead-inner{padding:10px 16px 0}
+.mast-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.mast-brand{display:flex;align-items:center;gap:10px}
+.mast-logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,var(--acc),var(--acc2));display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:var(--pill-shadow)}
+.mast-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;letter-spacing:-0.3px;line-height:1}
+.mast-sub{font-size:9px;color:var(--muted);margin-top:2px;font-weight:500;letter-spacing:0.3px;text-transform:uppercase}
+.mast-right{display:flex;align-items:center;gap:8px}
+.phase-chip{font-size:9px;font-weight:700;padding:4px 10px;border-radius:99px;background:linear-gradient(135deg,var(--acc),#5b8cf5);color:#fff;letter-spacing:0.5px;text-transform:uppercase;box-shadow:var(--pill-shadow)}
+.theme-toggle{width:30px;height:30px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface2);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.theme-toggle:hover{border-color:var(--acc)}
+
+/* SCORE BANNER */
+.score-banner{background:linear-gradient(135deg,#0d2252 0%,#1a4a8a 50%,#0d2252 100%);margin:0 16px 0;border-radius:0 0 var(--r) var(--r);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sb-left{display:flex;align-items:baseline;gap:6px}
+.sb-score{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:#fff;line-height:1}
+.sb-pct{font-size:14px;color:rgba(255,255,255,0.6);font-weight:500}
+.sb-label{font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.8px;margin-top:2px}
+.sb-grade{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;opacity:0.9}
+.sb-phases{display:flex;gap:5px;align-items:center}
+.sb-ph{text-align:center;padding:4px 8px;border-radius:var(--rs);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12)}
+.sb-ph-v{font-size:12px;font-weight:700;color:#fff;line-height:1}
+.sb-ph-l{font-size:7px;color:rgba(255,255,255,0.5);margin-top:2px;text-transform:uppercase;letter-spacing:0.4px}
+.sb-bar-wrap{flex:1;min-width:0}
+.sb-bar-track{height:4px;background:rgba(255,255,255,0.12);border-radius:99px;overflow:hidden;margin-bottom:4px}
+.sb-bar-fill{height:100%;background:linear-gradient(90deg,#38d9a9,#60a5fa);border-radius:99px;transition:width .6s ease}
+.sb-bar-meta{font-size:9px;color:rgba(255,255,255,0.5);text-align:right}
+
+/* STATS STRIP */
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:10px 16px 0}
+.stat-card{background:var(--surface);border-radius:var(--rs);padding:8px 6px;text-align:center;border:1px solid var(--border);box-shadow:var(--card-shadow);position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.stat-card.s1::before{background:var(--p2)} .stat-card.s2::before{background:var(--p4)}
+.stat-card.s3::before{background:var(--acc)} .stat-card.s4::before{background:var(--p5)}
+.stat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;line-height:1}
+.stat-lbl{font-size:8px;color:var(--muted);margin-top:2px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.s1 .stat-val{color:var(--p2)} .s2 .stat-val{color:var(--p4)}
+.s3 .stat-val{color:var(--acc)} .s4 .stat-val{color:var(--p5)}
+
+/* PROGRESS */
+.prog-strip{display:flex;align-items:center;gap:10px;padding:8px 16px 10px}
+.prog-track{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width .5s ease;min-width:4px}
+.prog-text{font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap}
+
+/* CONTROL STRIP */
+.control-strip{background:var(--surface);border-bottom:1.5px solid var(--border);position:sticky;top:0;z-index:90;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.filter-row{display:flex;gap:6px;padding:9px 16px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--border)}
+.filter-row::-webkit-scrollbar{display:none}
+.fchip{flex-shrink:0;padding:6px 14px;border-radius:99px;font-size:10px;font-weight:700;border:1.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .15s;letter-spacing:0.3px}
+.fchip[data-ph="0"].active{background:linear-gradient(135deg,var(--acc),#5b8cf5);color:#fff;border-color:transparent;box-shadow:var(--pill-shadow)}
+.fchip[data-ph="1"].active{background:var(--p1);color:#fff;border-color:var(--p1)}
+.fchip[data-ph="2"].active{background:var(--p2);color:#fff;border-color:var(--p2)}
+.fchip[data-ph="3"].active{background:var(--p3);color:#fff;border-color:var(--p3)}
+.fchip[data-ph="4"].active{background:var(--p4);color:#fff;border-color:var(--p4)}
+.fchip[data-ph="5"].active{background:var(--p5);color:#fff;border-color:var(--p5)}
+.search-row{padding:8px 16px}
+.search-inner{position:relative}
+.search-icon-el{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:13px;opacity:0.35;pointer-events:none}
+.search-field{width:100%;padding:9px 12px 9px 36px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:all .2s}
+.search-field:focus{border-color:var(--acc);background:var(--surface);box-shadow:0 0 0 3px rgba(59,111,212,0.08)}
+.search-field::placeholder{color:var(--muted)}
+
+/* PANELS */
+.panel{display:none;padding:12px 16px}
 .panel.active{display:block}
-.days{display:flex;flex-direction:column;gap:7px}
-.shdr{display:flex;align-items:center;gap:8px;padding:6px 0 2px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
-.shdr::after{content:'';flex:1;height:1px;background:var(--border)}
-.dc{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow);transition:border-color 0.2s;animation:fu 0.22s ease both}
-@keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.dc.done{border-left:3.5px solid var(--p2)}.dc.inprog{border-left:3.5px solid var(--p4)}
-.dh{display:flex;align-items:center;gap:10px;padding:11px 13px;cursor:pointer;user-select:none}
-.dn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;flex-shrink:0;border:1px solid var(--border)}
-.di{flex:1;min-width:0}
-.dt{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.1px}
-.dm{font-size:10px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
-.pp{font-size:9px;font-weight:600;padding:1px 6px;border-radius:99px}
-.dr{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.sr{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;font-weight:700;transition:all 0.2s}
-.sr.done{background:var(--p2);border-color:var(--p2);color:#fff}.sr.inprog{background:var(--p4);border-color:var(--p4);color:#fff}
-.chv{font-size:10px;color:var(--muted);transition:transform 0.2s}.chv.open{transform:rotate(180deg)}
-.sbadge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:99px;background:rgba(22,163,74,0.12);color:var(--p2);border:1px solid rgba(22,163,74,0.25)}
-.db{display:none;padding:0 13px 13px;border-top:1px solid var(--border)}
-.db.open{display:block}
-.tgrid{display:flex;flex-direction:column;gap:9px;padding-top:11px}
-.ti{display:flex;gap:9px;align-items:flex-start}
-.ticon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
-.ttype{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:var(--muted)}
-.tmins{font-size:9px;color:var(--muted);opacity:0.6;margin-left:4px;font-weight:400;text-transform:none;letter-spacing:0}
-.ttxt{font-size:12px;color:var(--muted2);margin-top:3px;line-height:1.55}
-.tmr{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:9px 12px;border-radius:var(--rs);background:var(--surface2);border:1px solid var(--border)}
-.tdisp{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--tcol);letter-spacing:1px}
-.tlbl{font-size:9px;color:var(--muted);margin-top:2px}
-.tctrl{display:flex;gap:6px}
-.tbtn{padding:6px 12px;border-radius:var(--rs);font-size:11px;font-weight:600;font-family:'Manrope',sans-serif;border:1px solid var(--border);background:var(--surface);color:var(--muted2);cursor:pointer;transition:all 0.15s}
-.tbtn.run{background:rgba(217,119,6,0.12);color:var(--p4);border-color:rgba(217,119,6,0.3)}
-.tbtn.go{background:linear-gradient(135deg,var(--acc),#3b6fd4);color:#fff;border-color:transparent}
-.ssec{margin-top:10px;padding:10px 12px;border-radius:var(--rs);background:var(--scbg);border:1px solid var(--border)}
-.stit{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:7px}
-.sirow{display:flex;align-items:center;gap:8px}
-.sinp2{width:70px;padding:6px 10px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;font-weight:600;font-family:'Syne',sans-serif;text-align:center;outline:none;transition:border-color 0.2s}
-.sinp2:focus{border-color:var(--acc)}
-.spct{font-size:13px;font-weight:600;color:var(--muted)}
-.ssbtn{padding:6px 14px;border-radius:var(--rs);font-size:11px;font-weight:600;font-family:'Manrope',sans-serif;border:none;background:var(--p2);color:#fff;cursor:pointer}
-.sres{font-size:12px;font-weight:600;margin-top:6px}
-.arow{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
-.ab{flex:1;padding:10px 8px;border-radius:var(--rs);font-size:12px;font-weight:600;font-family:'Manrope',sans-serif;border:1.5px solid var(--border);background:var(--surface2);color:var(--muted2);cursor:pointer;transition:all 0.15s;text-align:center}
-.ab:active{transform:scale(0.97)}
-.ab.go{background:linear-gradient(135deg,var(--acc),#2563eb);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(79,142,247,0.25)}
-.ab.done2{background:rgba(22,163,74,0.10);color:var(--p2);border-color:rgba(22,163,74,0.3)}
-.ab.prog{background:rgba(217,119,6,0.10);color:var(--p4);border-color:rgba(217,119,6,0.3)}
-.cc{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:13px;margin-bottom:7px;display:flex;gap:11px;align-items:flex-start;box-shadow:var(--shadow)}
-.cn{font-size:13px;font-weight:600}.cp{font-size:10px;color:var(--muted);margin-top:2px}
-.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
-.ctag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--surface2);color:var(--muted2);border:1px solid var(--border)}
-.cenr{padding:5px 11px;border-radius:99px;font-size:10px;font-weight:600;border:1.5px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;font-family:'Manrope',sans-serif;white-space:nowrap;flex-shrink:0;transition:all 0.15s}
-.cenr.enrolled{background:rgba(22,163,74,0.12);color:var(--p2);border-color:rgba(22,163,74,0.3)}
-.rc{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:11px 13px;margin-bottom:6px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow)}
-.rph{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Syne',sans-serif;flex-shrink:0}
-.mo{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;display:none;align-items:center;justify-content:center;padding:20px}
-.mo.open{display:flex}
-.md{background:var(--surface);border-radius:var(--r);padding:20px;max-width:300px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
-.mt{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px}
-.mb{font-size:13px;color:var(--muted2);line-height:1.5;margin-bottom:16px}
-.ma{display:flex;gap:8px}
-.mbtn{flex:1;padding:10px;border-radius:var(--rs);font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;cursor:pointer;border:1.5px solid var(--border);background:var(--surface2);color:var(--muted2)}
-.mbtn.d{background:#dc2626;color:#fff;border-color:#dc2626}
-.bnav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 14px 16px;display:flex;justify-content:space-around;z-index:100}
-.ni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;opacity:0.4;transition:opacity 0.15s;min-width:48px}
-.ni.active{opacity:1}
-.nico{font-size:20px}
-.nlbl{font-size:9px;font-weight:600;color:var(--muted)}
-.ni.active .nlbl{color:var(--acc)}
-.rni{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;min-width:48px;opacity:0.45}
-.toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:var(--bg);padding:9px 18px;border-radius:99px;font-size:12px;font-weight:600;z-index:998;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.day-list{display:flex;flex-direction:column;gap:10px}
+.section-rule{display:flex;align-items:center;gap:10px;padding:8px 0 4px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted)}
+.section-rule::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* DAY CARD — MAGAZINE STYLE */
+.dcard{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:var(--card-shadow);transition:all .2s;animation:slideUp .2s ease both}
+@keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.dcard.done{border-left:4px solid var(--p2)}
+.dcard.inprog{border-left:4px solid var(--p4)}
+.dcard-top{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none}
+.day-badge{min-width:42px;height:42px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.day-badge-num{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;line-height:1}
+.day-badge-lbl{font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;opacity:0.7;margin-top:1px}
+.dcard-info{flex:1;min-width:0}
+.dcard-topic{font-size:14px;font-weight:700;letter-spacing:-0.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.dcard-meta{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
+.meta-week{font-size:9px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.4px}
+.phase-tag{font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;letter-spacing:0.2px}
+.score-tag{font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px}
+.dcard-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.status-icon{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;transition:all .2s}
+.status-icon.done{background:var(--p2);border-color:var(--p2);color:#fff;box-shadow:0 2px 8px rgba(14,164,114,0.3)}
+.status-icon.inprog{background:var(--p4);border-color:var(--p4);color:#fff;box-shadow:0 2px 8px rgba(194,113,12,0.3)}
+.expand-icon{font-size:10px;color:var(--muted);transition:transform .25s}
+.expand-icon.open{transform:rotate(180deg)}
+
+/* CARD BODY */
+.dcard-body{display:none;border-top:1.5px solid var(--border)}
+.dcard-body.open{display:block}
+
+/* TASKS */
+.task-section{padding:14px 16px;display:flex;flex-direction:column;gap:0}
+.task-row{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--border)}
+.task-row:last-child{border-bottom:none}
+.task-ico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.task-content{flex:1}
+.task-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.task-mins-badge{font-size:8px;font-weight:600;padding:1px 5px;border-radius:99px;background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.task-text{font-size:12px;color:var(--muted2);margin-top:4px;line-height:1.65}
+
+/* SOURCES */
+.sources-section{background:var(--surface2);border-top:1.5px solid var(--border);padding:12px 16px}
+.sources-title{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.sources-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.source-links{display:flex;flex-direction:column;gap:7px}
+.source-link{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--rs);background:var(--surface);border:1.5px solid var(--border);cursor:pointer;text-decoration:none;transition:all .15s}
+.source-link:hover{border-color:var(--acc);box-shadow:0 2px 8px rgba(59,111,212,0.1)}
+.source-type-badge{font-size:8px;font-weight:800;padding:3px 7px;border-radius:99px;text-transform:uppercase;letter-spacing:0.4px;flex-shrink:0;white-space:nowrap}
+.type-video{background:rgba(220,38,38,0.1);color:#c0392b;border:1px solid rgba(220,38,38,0.2)}
+.type-docs{background:rgba(59,111,212,0.1);color:#3b6fd4;border:1px solid rgba(59,111,212,0.2)}
+.type-article{background:rgba(14,164,114,0.1);color:#0ea472;border:1px solid rgba(14,164,114,0.2)}
+.source-name{font-size:12px;font-weight:600;color:var(--text);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.source-arrow{font-size:11px;color:var(--muted);flex-shrink:0}
+
+/* TIMER + SCORE */
+.action-section{padding:12px 16px;display:flex;flex-direction:column;gap:10px;border-top:1.5px solid var(--border)}
+.timer-card{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-radius:var(--rs);background:var(--scbg);border:1.5px solid var(--border)}
+.timer-display{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--tcol);letter-spacing:2px;line-height:1}
+.timer-lbl{font-size:9px;color:var(--muted);margin-top:2px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.timer-btns{display:flex;gap:6px}
+.tbtn{padding:7px 14px;border-radius:var(--rs);font-size:11px;font-weight:700;font-family:'Inter',sans-serif;border:1.5px solid var(--border);background:var(--surface);color:var(--muted2);cursor:pointer;transition:all .15s}
+.tbtn.run{background:rgba(194,113,12,0.1);color:var(--p4);border-color:rgba(194,113,12,0.3)}
+.tbtn.go{background:linear-gradient(135deg,var(--acc),#5b8cf5);color:#fff;border-color:transparent;box-shadow:var(--pill-shadow)}
+.score-card{padding:12px 14px;border-radius:var(--rs);background:var(--surface2);border:1.5px solid var(--border)}
+.score-label{font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px}
+.score-input-row{display:flex;align-items:center;gap:8px}
+.score-number-inp{width:72px;padding:8px 10px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-weight:700;font-family:'Playfair Display',serif;text-align:center;outline:none;transition:all .2s}
+.score-number-inp:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(59,111,212,0.1)}
+.score-pct-sym{font-size:14px;font-weight:700;color:var(--muted)}
+.score-save-btn{padding:8px 16px;border-radius:var(--rs);font-size:11px;font-weight:700;font-family:'Inter',sans-serif;border:none;background:linear-gradient(135deg,var(--p2),#0a8a5c);color:#fff;cursor:pointer;box-shadow:0 3px 10px rgba(14,164,114,0.25);letter-spacing:0.3px}
+.score-result-bar{margin-top:8px}
+.score-result-track{height:4px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:6px}
+.score-result-fill{height:100%;border-radius:99px;transition:width .4s ease}
+.score-result-text{font-size:11px;font-weight:600;padding:6px 10px;border-radius:var(--rs)}
+.main-action-btn{width:100%;padding:12px;border-radius:var(--rs);font-size:13px;font-weight:700;font-family:'Inter',sans-serif;border:none;cursor:pointer;transition:all .15s;letter-spacing:0.2px}
+.main-action-btn:active{transform:scale(0.98)}
+.btn-start{background:linear-gradient(135deg,var(--acc),#5b8cf5);color:#fff;box-shadow:0 4px 16px rgba(59,111,212,0.3)}
+.btn-done{background:linear-gradient(135deg,var(--p2),#0a8a5c);color:#fff;box-shadow:0 4px 16px rgba(14,164,114,0.3)}
+.btn-reset{background:var(--surface3);color:var(--muted2);border:1.5px solid var(--border)}
+
+/* SCORE REPORT PANEL */
+.report-masthead{background:linear-gradient(140deg,#0d2252,#1a4a8a,#0d2252);border-radius:var(--r);padding:20px;margin-bottom:12px;box-shadow:0 8px 30px rgba(13,34,82,0.3)}
+.report-headline{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.report-subline{font-size:11px;color:rgba(255,255,255,0.6);font-weight:500}
+.report-overall{display:flex;align-items:flex-end;justify-content:space-between;margin-top:16px}
+.report-big{font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:#fff;line-height:1}
+.report-big span{font-size:22px;opacity:0.6}
+.report-grade-box{text-align:right}
+.report-grade{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#fff}
+.report-grade-lbl{font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.8px;margin-top:2px}
+.phase-report-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:16px;margin-bottom:10px;box-shadow:var(--card-shadow)}
+.prc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.prc-name{font-size:14px;font-weight:700;letter-spacing:-0.1px}
+.prc-score{font-family:'Playfair Display',serif;font-size:22px;font-weight:700}
+.prc-bar-track{height:6px;background:var(--border);border-radius:99px;overflow:hidden;margin-bottom:8px}
+.prc-bar-fill{height:100%;border-radius:99px;transition:width .6s ease}
+.prc-meta{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:10px;font-weight:500}
+.day-dots{display:flex;flex-wrap:wrap;gap:4px}
+.day-dot{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;border:1px solid var(--border);transition:all .15s;cursor:default}
+
+/* CERTS PANEL */
+.cert-item{background:var(--surface);border-radius:var(--r);border:1px solid var(--border);padding:16px;margin-bottom:10px;box-shadow:var(--card-shadow);display:flex;gap:14px;align-items:flex-start}
+.cert-emoji{font-size:26px;flex-shrink:0}
+.cert-title{font-size:14px;font-weight:700;letter-spacing:-0.1px}
+.cert-sub{font-size:10px;color:var(--muted);margin-top:2px;font-weight:500}
+.cert-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.cert-chip{font-size:9px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--surface2);color:var(--muted2);border:1px solid var(--border)}
+.enroll-btn{padding:6px 14px;border-radius:99px;font-size:10px;font-weight:700;border:1.5px solid var(--border);background:var(--surface2);color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0;letter-spacing:0.3px;transition:all .15s}
+.enroll-btn.enrolled{background:rgba(14,164,114,0.1);color:var(--p2);border-color:rgba(14,164,114,0.3)}
+.res-item{background:var(--surface);border-radius:var(--rs);border:1px solid var(--border);padding:12px 14px;margin-bottom:6px;display:flex;gap:12px;align-items:center;box-shadow:var(--card-shadow)}
+.res-badge{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;font-family:'Inter',sans-serif;flex-shrink:0}
+.res-name{font-size:12px;font-weight:700}
+.res-url{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:2px solid var(--border);padding:8px 16px 16px;display:flex;justify-content:space-around;z-index:100;box-shadow:0 -4px 24px rgba(0,0,0,0.06)}
+.nav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;opacity:0.38;transition:all .15s;min-width:52px;padding:4px 8px;border-radius:var(--rs);border:none;background:transparent}
+.nav-btn.active{opacity:1}
+.nav-ico{font-size:21px}
+.nav-label{font-size:8px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.nav-btn.active .nav-label{color:var(--acc)}
+.nav-reset{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;opacity:0.38;min-width:52px;padding:4px 8px;border-radius:var(--rs)}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}
+.modal-bg.open{display:flex}
+.modal-box{background:var(--surface);border-radius:var(--r);padding:24px;max-width:300px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,0.4)}
+.modal-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:8px}
+.modal-body{font-size:13px;color:var(--muted2);line-height:1.6;margin-bottom:20px}
+.modal-actions{display:flex;gap:8px}
+.modal-btn{flex:1;padding:12px;border-radius:var(--rs);font-size:13px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;border:1.5px solid var(--border);background:var(--surface2);color:var(--muted2)}
+.modal-btn.danger{background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(192,57,43,0.3)}
+
+/* TOAST */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:var(--bg);padding:11px 22px;border-radius:99px;font-size:12px;font-weight:700;z-index:998;transition:transform .35s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;box-shadow:0 8px 28px rgba(0,0,0,0.25);letter-spacing:0.2px}
 .toast.show{transform:translateX(-50%) translateY(0)}
-.empty{text-align:center;padding:3rem 1rem;color:var(--muted);font-size:13px}
+.empty-state{text-align:center;padding:4rem 1rem;color:var(--muted);font-size:14px;font-weight:500}
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="htop">
-    <div class="brand"><div class="bicon">&#x1F6E1;&#xFE0F;</div><div><div class="bname">IAM Roadmap</div><div class="bsub">Thilaga &middot; 10 wks &middot; 70 days &middot; 30&ndash;45 min/day</div></div></div>
-    <div class="hright"><div class="pbadge" id="pbadge">P1: Core IAM</div><button class="tbtn2" onclick="toggleTheme()" id="thbtn">&#x1F319;</button></div>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="mast-top">
+      <div class="mast-brand">
+        <div class="mast-logo">&#x1F6E1;&#xFE0F;</div>
+        <div>
+          <div class="mast-title">IAM Roadmap</div>
+          <div class="mast-sub">Thilaga &bull; 10 Weeks &bull; 70 Days</div>
+        </div>
+      </div>
+      <div class="mast-right">
+        <div class="phase-chip" id="phase-chip">P1: Core IAM</div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">&#x1F319;</button>
+      </div>
+    </div>
+    <div class="score-banner">
+      <div>
+        <div class="sb-left"><div class="sb-score" id="sb-score">--</div><div class="sb-pct">%</div></div>
+        <div class="sb-label">Avg Score</div>
+      </div>
+      <div class="sb-bar-wrap">
+        <div class="sb-bar-track"><div class="sb-bar-fill" id="sb-bar" style="width:0%"></div></div>
+        <div class="sb-bar-meta" id="sb-meta">0 of 70 scored</div>
+      </div>
+      <div><div class="sb-grade" id="sb-grade">--</div><div class="sb-label" style="text-align:right">Grade</div></div>
+    </div>
   </div>
-  <div class="srow">
-    <div class="stat sd"><div class="sv" id="sd">0</div><div class="sl">Done</div></div>
-    <div class="stat sp"><div class="sv" id="sp">0</div><div class="sl">Active</div></div>
-    <div class="stat sc"><div class="sv" id="sc">0%</div><div class="sl">Progress</div></div>
-    <div class="stat ss"><div class="sv" id="ss">0</div><div class="sl">Streak &#x1F525;</div></div>
+  <div class="stats-strip">
+    <div class="stat-card s1"><div class="stat-val" id="st-done">0</div><div class="stat-lbl">Done</div></div>
+    <div class="stat-card s2"><div class="stat-val" id="st-prog">0</div><div class="stat-lbl">Active</div></div>
+    <div class="stat-card s3"><div class="stat-val" id="st-pct">0%</div><div class="stat-lbl">Complete</div></div>
+    <div class="stat-card s4"><div class="stat-val" id="st-str">0&#x1F525;</div><div class="stat-lbl">Streak</div></div>
   </div>
-  <div class="prow"><div class="pt"><div class="pf" id="pf" style="width:0%"></div></div><div class="pl" id="pl">0 / 70</div></div>
-</div>
-<div class="sticky-wrap"><div class="fbar" id="fbar">
-  <button class="fb active" data-ph="0" onclick="setPhase(0,this)">All</button>
-  <button class="fb" data-ph="1" onclick="setPhase(1,this)">&#x26A1; Core IAM</button>
-  <button class="fb" data-ph="2" onclick="setPhase(2,this)">&#x1F33F; IGA</button>
-  <button class="fb" data-ph="3" onclick="setPhase(3,this)">&#x1F510; PAM</button>
-  <button class="fb" data-ph="4" onclick="setPhase(4,this)">&#x1F3D7; Architecture</button>
-  <button class="fb" data-ph="5" onclick="setPhase(5,this)">&#x1F3C6; Certs</button>
-</div>
-<div class="sbar" id="sbar">
-  <div class="swrap"><span class="sico">&#x1F50D;</span><input class="sinp" type="search" placeholder="Search topics..." oninput="setSearch(this.value)"></div>
-</div></div>
-<div id="pt" class="panel active"><div class="days" id="dc"></div></div>
-<div id="pc" class="panel">
-  <div class="days">
-    <div class="shdr">Certifications</div>
-    <div class="cc"><div style="font-size:22px;flex-shrink:0">&#x1F3AF;</div><div style="flex:1"><div class="cn">SC-300: Microsoft Identity &amp; Access Admin</div><div class="cp">Microsoft &middot; Weeks 9&ndash;10</div><div class="ctags"><span class="ctag">$165</span><span class="ctag">40&ndash;60 hrs</span><span class="ctag">&#x2B50; Top Priority</span></div></div><button class="cenr" onclick="toggleCert(this)">Enroll</button></div>
-    <div class="cc"><div style="font-size:22px;flex-shrink:0">&#x26F5;</div><div style="flex:1"><div class="cn">SailPoint IdentityNow Professional</div><div class="cp">SailPoint Compass &middot; Weeks 9&ndash;10</div><div class="ctags"><span class="ctag">Free</span><span class="ctag">20&ndash;30 hrs</span></div></div><button class="cenr" onclick="toggleCert(this)">Enroll</button></div>
-    <div class="cc"><div style="font-size:22px;flex-shrink:0">&#x1F6E1;&#xFE0F;</div><div style="flex:1"><div class="cn">CyberArk Trustee</div><div class="cp">CyberArk &middot; Week 10+</div><div class="ctags"><span class="ctag">$200</span><span class="ctag">30&ndash;40 hrs</span></div></div><button class="cenr" onclick="toggleCert(this)">Enroll</button></div>
-    <div class="cc"><div style="font-size:22px;flex-shrink:0">&#x1F52E;</div><div style="flex:1"><div class="cn">CIAM &mdash; Certified Identity &amp; Access Manager</div><div class="cp">IDPRO &middot; Future goal</div><div class="ctags"><span class="ctag">$400</span><span class="ctag">60&ndash;80 hrs</span></div></div><button class="cenr" onclick="toggleCert(this)">Enroll</button></div>
-    <div class="shdr" style="margin-top:6px">Key Resources</div>
-    <div class="rc"><div class="rph" style="background:var(--p1b);color:var(--p1)">P1</div><div style="flex:1"><div style="font-size:12px;font-weight:500">Microsoft Learn &mdash; SC-300 Path</div><div style="font-size:10px;color:var(--muted)">Free &middot; learn.microsoft.com</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
-    <div class="rc"><div class="rph" style="background:var(--p1b);color:var(--p1)">P1</div><div style="flex:1"><div style="font-size:12px;font-weight:500">John Savill &mdash; Azure / Entra ID YouTube</div><div style="font-size:10px;color:var(--muted)">YouTube &middot; @NTFAQGuy</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
-    <div class="rc"><div class="rph" style="background:var(--p2b);color:var(--p2)">P2</div><div style="flex:1"><div style="font-size:12px;font-weight:500">SailPoint Compass Learning</div><div style="font-size:10px;color:var(--muted)">Free &middot; compass.sailpoint.com</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
-    <div class="rc"><div class="rph" style="background:var(--p3b);color:var(--p3)">P3</div><div style="flex:1"><div style="font-size:12px;font-weight:500">CyberArk Blueprint Training</div><div style="font-size:10px;color:var(--muted)">Free &middot; cyberark.com/blueprint</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
-    <div class="rc"><div class="rph" style="background:var(--p4b);color:var(--p4)">P4</div><div style="flex:1"><div style="font-size:12px;font-weight:500">MITRE ATT&amp;CK &mdash; Identity Techniques</div><div style="font-size:10px;color:var(--muted)">attack.mitre.org</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
-    <div class="rc"><div class="rph" style="background:var(--p5b);color:var(--p5)">P5</div><div style="flex:1"><div style="font-size:12px;font-weight:500">NIST SP 800-207 &mdash; Zero Trust</div><div style="font-size:10px;color:var(--muted)">csrc.nist.gov</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
+  <div class="prog-strip">
+    <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="prog-text" id="prog-text">0 / 70</div>
   </div>
 </div>
-<div class="bnav">
-  <div class="ni active" onclick="switchTab('t',this)"><div class="nico">&#x1F4C5;</div><div class="nlbl">Tracker</div></div>
-  <div class="ni" onclick="switchTab('c',this)"><div class="nico">&#x1F3C6;</div><div class="nlbl">Certs</div></div>
-  <div class="rni" onclick="openReset()"><div class="nico">&#x1F504;</div><div class="nlbl" style="font-size:9px;font-weight:600;color:var(--muted)">Reset</div></div>
+
+<div class="control-strip" id="control-strip">
+  <div class="filter-row">
+    <button class="fchip active" data-ph="0" onclick="setPhase(0,this)">All</button>
+    <button class="fchip" data-ph="1" onclick="setPhase(1,this)">&#x26A1; Core IAM</button>
+    <button class="fchip" data-ph="2" onclick="setPhase(2,this)">&#x1F33F; IGA</button>
+    <button class="fchip" data-ph="3" onclick="setPhase(3,this)">&#x1F510; PAM</button>
+    <button class="fchip" data-ph="4" onclick="setPhase(4,this)">&#x1F3D7; Architecture</button>
+    <button class="fchip" data-ph="5" onclick="setPhase(5,this)">&#x1F3C6; Certs</button>
+  </div>
+  <div class="search-row">
+    <div class="search-inner">
+      <span class="search-icon-el">&#x1F50D;</span>
+      <input class="search-field" type="search" placeholder="Search topics, concepts..." oninput="setSearch(this.value)">
+    </div>
+  </div>
 </div>
-<div class="mo" id="modal">
-  <div class="md"><div class="mt">Reset All Progress?</div><div class="mb">This will clear all completed days, timers, and scores. Cannot be undone.</div><div class="ma"><button class="mbtn" onclick="closeReset()">Cancel</button><button class="mbtn d" onclick="doReset()">Yes, Reset</button></div></div>
+
+<div id="panel-tracker" class="panel active">
+  <div class="day-list" id="day-container"></div>
+</div>
+
+<div id="panel-scores" class="panel">
+  <div class="report-masthead">
+    <div class="report-headline">Score Report</div>
+    <div class="report-subline">Your IAM learning performance</div>
+    <div class="report-overall">
+      <div><div class="report-big" id="rp-big">--<span>%</span></div><div style="font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px" id="rp-meta">No scores recorded yet</div></div>
+      <div class="report-grade-box"><div class="report-grade" id="rp-grade">--</div><div class="report-grade-lbl">Grade</div></div>
+    </div>
+  </div>
+  <div id="phase-reports"></div>
+</div>
+
+<div id="panel-certs" class="panel">
+  <div style="display:flex;flex-direction:column;gap:0">
+    <div class="section-rule">Certifications</div>
+    <div class="cert-item"><div class="cert-emoji">&#x1F3AF;</div><div style="flex:1"><div class="cert-title">SC-300: Microsoft Identity &amp; Access Admin</div><div class="cert-sub">Microsoft &bull; Weeks 9&ndash;10</div><div class="cert-chips"><span class="cert-chip">$165</span><span class="cert-chip">40&ndash;60 hrs</span><span class="cert-chip">&#x2B50; Priority</span></div></div><button class="enroll-btn" onclick="toggleEnroll(this)">Enroll</button></div>
+    <div class="cert-item"><div class="cert-emoji">&#x26F5;</div><div style="flex:1"><div class="cert-title">SailPoint IdentityNow Professional</div><div class="cert-sub">SailPoint Compass &bull; Weeks 9&ndash;10</div><div class="cert-chips"><span class="cert-chip">Free</span><span class="cert-chip">20&ndash;30 hrs</span></div></div><button class="enroll-btn" onclick="toggleEnroll(this)">Enroll</button></div>
+    <div class="cert-item"><div class="cert-emoji">&#x1F6E1;&#xFE0F;</div><div style="flex:1"><div class="cert-title">CyberArk Trustee</div><div class="cert-sub">CyberArk &bull; Week 10+</div><div class="cert-chips"><span class="cert-chip">$200</span><span class="cert-chip">30&ndash;40 hrs</span></div></div><button class="enroll-btn" onclick="toggleEnroll(this)">Enroll</button></div>
+    <div class="cert-item"><div class="cert-emoji">&#x1F52E;</div><div style="flex:1"><div class="cert-title">CIAM &mdash; Certified Identity &amp; Access Manager</div><div class="cert-sub">IDPRO &bull; Future goal</div><div class="cert-chips"><span class="cert-chip">$400</span><span class="cert-chip">60&ndash;80 hrs</span></div></div><button class="enroll-btn" onclick="toggleEnroll(this)">Enroll</button></div>
+    <div class="section-rule" style="margin-top:8px">Key Resources</div>
+    <div class="res-item"><div class="res-badge" style="background:var(--p1b);color:var(--p1)">P1</div><div style="flex:1"><div class="res-name">Microsoft Learn &mdash; SC-300</div><div class="res-url">learn.microsoft.com</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
+    <div class="res-item"><div class="res-badge" style="background:var(--p1b);color:var(--p1)">P1</div><div style="flex:1"><div class="res-name">John Savill &mdash; Entra ID YouTube</div><div class="res-url">@NTFAQGuy</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
+    <div class="res-item"><div class="res-badge" style="background:var(--p2b);color:var(--p2)">P2</div><div style="flex:1"><div class="res-name">SailPoint Compass Learning</div><div class="res-url">compass.sailpoint.com</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
+    <div class="res-item"><div class="res-badge" style="background:var(--p3b);color:var(--p3)">P3</div><div style="flex:1"><div class="res-name">CyberArk Blueprint Training</div><div class="res-url">cyberark.com/blueprint</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
+    <div class="res-item"><div class="res-badge" style="background:var(--p4b);color:var(--p4)">P4</div><div style="flex:1"><div class="res-name">MITRE ATT&amp;CK Identity</div><div class="res-url">attack.mitre.org</div></div><span>&#x2B50;&#x2B50;&#x2B50;</span></div>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <button class="nav-btn active" onclick="switchTab('tracker',this)" id="nav-tracker"><div class="nav-ico">&#x1F4C5;</div><div class="nav-label">Tracker</div></button>
+  <button class="nav-btn" onclick="switchTab('scores',this)" id="nav-scores"><div class="nav-ico">&#x1F4CA;</div><div class="nav-label">Scores</div></button>
+  <button class="nav-btn" onclick="switchTab('certs',this)" id="nav-certs"><div class="nav-ico">&#x1F3C6;</div><div class="nav-label">Certs</div></button>
+  <div class="nav-reset" onclick="openModal()"><div class="nav-ico">&#x1F504;</div><div class="nav-label" style="font-size:8px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Reset</div></div>
+</div>
+
+<div class="modal-bg" id="modal">
+  <div class="modal-box">
+    <div class="modal-title">Reset Progress?</div>
+    <div class="modal-body">This will clear all your completed days, timers, and scores. This action cannot be undone.</div>
+    <div class="modal-actions">
+      <button class="modal-btn" onclick="closeModal()">Cancel</button>
+      <button class="modal-btn danger" onclick="doReset()">Yes, Reset All</button>
+    </div>
+  </div>
 </div>
 <div class="toast" id="toast"></div>
+
 <script>
-var PH={1:{name:'Core IAM',col:'var(--p1)',bg:'var(--p1b)'},2:{name:'IGA',col:'var(--p2)',bg:'var(--p2b)'},3:{name:'PAM',col:'var(--p3)',bg:'var(--p3b)'},4:{name:'Arch',col:'var(--p4)',bg:'var(--p4b)'},5:{name:'Certs',col:'var(--p5)',bg:'var(--p5b)'}};
-var DAYS=[[1, 1, 1, "What is IAM? Core Concepts", "Understand what IAM is \u2014 Authentication vs Authorisation vs Access Control. Study the IAM triad: Identity, Access, Governance.", "Draw a diagram showing how identity flows from a user request to a resource access grant.", "Write a simple explanation of how IAM differs from basic username and password security."], [2, 1, 1, "Authentication Fundamentals", "Study the three authentication factors: something you know, have, and are. Understand single-factor vs multi-factor authentication.", "Compare how different authentication methods protect against phishing and credential theft.", "Case study: Analyse a real-world breach caused by weak authentication. What could IAM have prevented?"], [3, 1, 1, "SAML 2.0 \u2014 How It Works", "Understand SAML 2.0: what it is, why it exists, key components \u2014 IdP, SP, Assertion, Binding. Study SP-initiated vs IdP-initiated flows.", "Trace through a SAML login flow step by step on paper, from user click to access granted.", "Draw the SAML authentication flow diagram from scratch without looking at notes."], [4, 1, 1, "OAuth 2.0 \u2014 Core Concepts", "Understand OAuth 2.0 grant types: Authorization Code, Client Credentials, Implicit (legacy), Device Flow. Know when to use each.", "Compare OAuth 2.0 with basic API key authentication \u2014 what problems does OAuth solve?", "Explain in plain language: what is an access token, who issues it, and how long should it live?"], [5, 1, 1, "OpenID Connect (OIDC)", "Understand how OIDC builds on OAuth 2.0 to add identity. Study ID token, UserInfo endpoint, and claims.", "Compare SAML vs OIDC \u2014 when would you choose one over the other in an enterprise?", "Write out what information is typically inside an ID token and why each field matters."], [6, 1, 1, "Identity Lifecycle Management", "Study the Joiner/Mover/Leaver model. Understand provisioning, de-provisioning, and access modification triggers.", "Map out a complete employee lifecycle from hire to exit and list every IAM action needed at each stage.", "What are the risks if de-provisioning is delayed by even one day? Write 5 real-world scenarios."], [7, 1, 1, "Single Sign-On (SSO) Concepts", "Understand what SSO is, how it works, the difference between SSO and federation. Study trust relationships between IdP and SP.", "List 5 benefits and 3 risks of implementing SSO across an organisation.", "Design a simple SSO architecture for a company with 3 internal apps and 2 cloud apps \u2014 on paper."], [8, 2, 1, "Multi-Factor Authentication (MFA)", "Study MFA types: TOTP, push notifications, FIDO2/WebAuthn, hardware keys, number matching. Understand phishing-resistant MFA.", "Compare the security strength of each MFA method. Which are phishing-resistant and why?", "Design an MFA policy for a hospital \u2014 balance security with clinical workflow urgency."], [9, 2, 1, "Zero Trust Identity Principles", "Understand Zero Trust: never trust always verify. Study core principles \u2014 least privilege, micro-segmentation, continuous verification.", "How does Zero Trust change traditional perimeter-based security? Map the differences.", "Identify 3 scenarios where a VPN model would fail but Zero Trust would succeed."], [10, 2, 1, "Directory Services Fundamentals", "Study what a directory service is \u2014 LDAP, Active Directory, cloud directories. Understand schema, OUs, attributes, and replication.", "Compare on-premises Active Directory vs a cloud-based identity directory \u2014 strengths and weaknesses.", "What happens to IAM if a directory service goes down? What are the failure modes?"], [11, 2, 1, "Federation and Trust Models", "Understand identity federation: how organisations share identity across trust boundaries. Study trust levels and federation protocols.", "Explain cross-domain federation \u2014 how Company A can trust Company B's identity claims.", "Design a federation model for a university where students, staff, and external partners all need access."], [12, 2, 1, "Session Management", "Study session tokens, session lifetime, idle timeout, absolute timeout, and session revocation. Understand refresh token patterns.", "What are the risks of long-lived sessions? How does session management impact user experience vs security?", "Define a session management policy for a financial services application \u2014 justify each decision."], [13, 2, 1, "IAM Security Principles", "Study least privilege, separation of duties, need-to-know, and defence in depth as applied to identity and access.", "Review the OWASP Broken Access Control category \u2014 understand the top IAM-related vulnerabilities.", "Conduct a mini threat-model: list 5 ways an attacker could exploit a poorly designed IAM system."], [14, 2, 1, "Phase 1 Review and Self-Test", "Revise all Phase 1 concepts: Authentication types, SSO, SAML, OAuth, OIDC, JML, Zero Trust, federation, session management.", "Create a one-page concept map linking all Phase 1 topics \u2014 show how they connect to each other.", "Self-quiz: Explain each concept out loud as if teaching a new team member. No notes."], [15, 3, 2, "What is IGA? Introduction", "Understand Identity Governance and Administration \u2014 what it is, why it matters, how it differs from basic IAM provisioning.", "Compare IGA with basic access management \u2014 what gaps does IGA fill that basic IAM cannot?", "Write a business case for IGA: what risks does it reduce and what compliance gaps does it close?"], [16, 3, 2, "Access Certification and Reviews", "Study access certification campaigns: what they are, who runs them, what triggers them, and what decisions are made.", "What are the consequences of rubber-stamping access reviews without real scrutiny? Give 3 examples.", "Design an access review process for a company with 500 users and 50 applications \u2014 who reviews what?"], [17, 3, 2, "Role-Based Access Control (RBAC)", "Understand RBAC deeply: role definition, role assignment, role hierarchy, and role mining from existing access patterns.", "Compare RBAC vs ABAC (Attribute-Based Access Control) \u2014 when does each model work better?", "Design an RBAC model for a hospital with doctors, nurses, admins, and billing staff."], [18, 3, 2, "Segregation of Duties (SoD)", "Understand SoD: what it is, why it exists, toxic combinations, SoD conflicts, and compensating controls.", "Identify 5 classic SoD conflicts in a finance department \u2014 explain why each is a risk.", "Design a SoD matrix for a procurement process: request \u2014 approve \u2014 pay."], [19, 3, 2, "Automated Provisioning Concepts", "Study the SCIM protocol: what it is, how it enables automated provisioning and de-provisioning across systems.", "Compare manual vs automated provisioning \u2014 calculate the risk difference in a 1000-employee org.", "Map out how automated provisioning would work when a new employee joins a company with 10 cloud apps."], [20, 3, 2, "Identity Analytics and Risk Scoring", "Understand how identity analytics works: behaviour baselines, anomaly detection, risk scoring, and UEBA.", "What signals indicate a compromised identity? List 10 behavioural anomalies that should trigger alerts.", "Design a risk scoring model for user access \u2014 what factors increase risk and how would you weight them?"], [21, 3, 2, "Access Request and Approval Workflows", "Study self-service access request models, approval chains, business justification, time-bound access, and emergency access.", "What are the risks of an overly manual access request process? What about fully automated approval?", "Design an access request workflow for a sensitive financial application \u2014 who approves and under what conditions?"], [22, 4, 2, "IGA Governance Frameworks", "Study governance frameworks for IAM: NIST, ISO 27001 identity controls, SOX access requirements, HIPAA IAM obligations.", "Map IAM controls to a compliance framework \u2014 which IGA capabilities satisfy which compliance requirements?", "What happens during an audit if access reviews have not been completed? What evidence do auditors look for?"], [23, 4, 2, "IGA in Cloud Environments", "Understand the unique IGA challenges in cloud: ephemeral identities, API access, serverless, and multi-cloud identity sprawl.", "How does IGA need to evolve for cloud-native organisations vs traditional on-premises environments?", "Identify 5 cloud-specific identity risks that traditional IGA processes would miss."], [24, 4, 2, "Entitlement Management", "Study entitlement management: what entitlements are, entitlement catalogues, entitlement sprawl, and access lifecycle.", "What is entitlement creep and why does it happen? How does it create security risk?", "Design an entitlement catalogue for a mid-sized company \u2014 what metadata should each entitlement have?"], [25, 4, 2, "Joiner Mover Leaver in IGA", "Deep-dive into JML from an IGA perspective: automated triggers, birthright access, role changes, and immediate termination.", "What is the risk window between an employee resigning and their access being removed? How do you close it?", "Design an automated leaver process \u2014 list every system and every step in the right sequence."], [26, 4, 2, "Audit Trails and Compliance Reporting", "Study what audit trails in IAM must capture: who did what, when, from where, and to which resource.", "What makes an audit trail legally defensible? What are the requirements for log integrity?", "Design an IAM audit report for a SOX audit \u2014 what data does the auditor need to see?"], [27, 4, 2, "IGA Program Design", "Understand how to build an IGA program: phases, stakeholders, scope, quick wins, and long-term maturity.", "What are the top 3 reasons IGA programs fail? How would you avoid each one?", "Draft a phased IGA implementation plan for a 200-person company starting from scratch."], [28, 4, 2, "Phase 2 Review and Self-Test", "Revise all IGA concepts: certification, RBAC, SoD, provisioning, analytics, governance, entitlements, JML.", "Update your concept map \u2014 add all Phase 2 topics and show how they connect to Phase 1.", "Self-quiz: Explain IGA's business value to a non-technical CFO in under 2 minutes. No notes."], [29, 5, 3, "What is PAM? Core Concepts", "Understand Privileged Access Management: what privileged accounts are, why they are high-risk, and what PAM controls protect them.", "What makes a privileged account privileged? List 10 types of privileged accounts in a typical enterprise.", "Why do attackers target privileged accounts? Map the attack path from phishing to domain admin."], [30, 5, 3, "Privileged Account Discovery", "Study how privileged accounts are discovered: scanning, agent-based discovery, directory queries, and shadow admin detection.", "What are shadow admins and why are they dangerous? How do they typically get created?", "Design a privileged account discovery process for an org that has never done PAM before."], [31, 5, 3, "Credential Vaulting Concepts", "Understand credential vaulting: how passwords are stored, encrypted, rotated, and checked in and out by users and systems.", "Why is shared admin password usage dangerous? What are the forensic implications during an incident?", "Design a credential vaulting policy: rotation frequency, who can check out, approval requirements, emergency access."], [32, 5, 3, "Just-in-Time (JIT) Access", "Understand JIT access: provisioning access only when needed, for a limited time, with full audit trail, then revoking it.", "Compare standing privilege vs just-in-time access \u2014 what attack surface does JIT reduce?", "Design a JIT access model for a cloud infrastructure team that needs periodic admin access to production."], [33, 5, 3, "Privileged Session Management", "Study privileged session management: session proxying, recording, real-time monitoring, and session termination.", "Why is session recording important for compliance and incident response? What should be captured?", "Design session monitoring rules: what user actions during a privileged session should trigger an alert?"], [34, 5, 3, "Privileged Identity Management (PIM)", "Study PIM concepts: eligible vs active roles, time-bound activation, approval workflows, and access reviews for privileged roles.", "What is the difference between PAM and PIM? How do they complement each other?", "Design a PIM policy for a cloud administrator role \u2014 activation conditions, duration limits, and approval chain."], [35, 5, 3, "Service Accounts and Non-Human Identities", "Understand service accounts: what they are, why they are risky, how they differ from human accounts, and how to govern them.", "Why do service accounts often have excessive privileges? What lifecycle challenges do they create?", "Design a service account governance policy: naming conventions, password rotation, owner accountability."], [36, 6, 3, "Secrets Management Concepts", "Study secrets management: what secrets are \u2014 API keys, certificates, tokens \u2014 how they leak, and how vaulting protects them.", "How do hardcoded secrets in code repositories create security risk? What are the common patterns?", "Design a secrets management policy for a development team: how are secrets stored, rotated, and audited?"], [37, 6, 3, "Break-Glass Access", "Study break-glass emergency access: what it is, when it is used, how it is controlled, and how it is audited.", "What controls must exist around break-glass accounts to prevent misuse while ensuring availability in a crisis?", "Design a break-glass access procedure: who triggers it, how is it approved, what is logged, and who reviews afterward?"], [38, 6, 3, "Least Privilege in PAM", "Study applying least privilege to privileged access: privilege tiering, admin workstations, and just-enough-administration.", "What is privilege creep in admin accounts and how does it happen over time?", "Redesign a typical IT admin role using least privilege principles \u2014 what permissions are truly necessary?"], [39, 6, 3, "PAM for Cloud Infrastructure", "Understand PAM in cloud environments: role assumption, temporary credentials, service-linked roles, and cloud-native privileged access.", "How does privileged access in cloud differ from on-premises? What traditional PAM controls do not apply?", "Map the privileged access risks unique to a multi-cloud environment and propose controls for each."], [40, 6, 3, "PAM Metrics and Maturity", "Study PAM maturity levels and key metrics: vaulted account coverage, orphaned account count, session recording coverage, JIT adoption.", "What does a PAM maturity model look like? Identify what capabilities exist at each maturity level.", "Design a PAM KPI dashboard: what metrics would you show leadership to demonstrate PAM program health?"], [41, 6, 3, "IGA and PAM Integration", "Understand how IGA and PAM must work together: access certifications for privileged roles, JML triggers for admin accounts.", "What gaps exist if an organisation has PAM but no IGA, or IGA but no PAM?", "Design how IGA and PAM should integrate: which events in IGA should trigger what actions in PAM?"], [42, 6, 3, "Phase 3 Review and Self-Test", "Revise all PAM concepts: privileged accounts, vaulting, JIT, session management, secrets, break-glass, cloud PAM.", "Update your concept map \u2014 add all Phase 3 topics and show connections to Phase 1 and 2.", "Self-quiz: Explain PAM to a sceptical CISO who thinks basic AD admin controls are sufficient."], [43, 7, 4, "IAM Architecture Patterns", "Study centralised vs federated vs decentralised IAM architectures. Understand hub-and-spoke, mesh, and hybrid models.", "What are the trade-offs between a centralised IAM architecture and a federated one?", "Draw IAM architecture options for a multinational enterprise with 10 subsidiaries \u2014 compare the models."], [44, 7, 4, "Multi-Cloud Identity Challenges", "Study identity management across multiple cloud providers: identity silos, different RBAC models, and federation across clouds.", "What happens when the same user needs access to multiple clouds \u2014 how do you manage identity consistently?", "Design a multi-cloud identity strategy: how should identities be managed, federated, and governed across 3 clouds?"], [45, 7, 4, "IAM Threat Modeling", "Study identity-related threats: credential stuffing, pass-the-hash, token theft, privilege escalation, lateral movement.", "Map 5 attack scenarios using MITRE ATT&CK identity techniques \u2014 trace attacker steps end to end.", "Apply STRIDE threat modeling to an IAM system \u2014 identify threats for each STRIDE category."], [46, 7, 4, "Zero Trust Architecture Design", "Study Zero Trust Architecture reference models: NIST SP 800-207, policy engine, policy administrator, policy enforcement point.", "How does identity serve as the control plane in a Zero Trust model? What changes from perimeter security?", "Design a Zero Trust architecture for a hybrid organisation \u2014 map each ZTA component to real controls."], [47, 7, 4, "API Security and Identity", "Understand how identity applies to APIs: OAuth scopes, API gateway authentication, token validation, and API-specific threats.", "What are the OWASP API Security Top 10 risks related to identity and access? Study each one.", "Design an API security model: how should a public API authenticate callers and enforce authorisation?"], [48, 7, 4, "IAM for SaaS and Cloud Apps", "Study the identity challenges of SaaS adoption: shadow IT, inconsistent access controls, data residency, and offboarding gaps.", "How does a Cloud Access Security Broker complement IAM for SaaS governance?", "Design an identity strategy for a company moving 20 applications to SaaS over 12 months."], [49, 7, 4, "IAM Policy and Standards Design", "Study how to write IAM policies, standards, and procedures. Understand the hierarchy: policy, standard, procedure, guideline.", "What should an enterprise IAM policy cover? Review examples from NIST and ISO frameworks.", "Draft a 1-page IAM policy for a hypothetical mid-sized company \u2014 include scope, principles, and key requirements."], [50, 8, 4, "Designing IAM for Scale", "Study IAM architecture at scale: high availability, disaster recovery, performance, directory replication, and global distribution.", "What breaks in IAM when an organisation grows from 1,000 to 100,000 users? Map the failure points.", "Design a highly available IAM architecture for a global company \u2014 what redundancy is needed at each layer?"], [51, 8, 4, "IAM Roadmap and Strategy", "Study how to build an IAM roadmap: current state assessment, maturity gaps, prioritisation, phasing, and business alignment.", "What is an IAM maturity model? Map the capabilities at each maturity level from Level 1 to Level 5.", "Create a 3-year IAM roadmap for a company currently at maturity Level 1 \u2014 what gets done when and why?"], [52, 8, 4, "IAM Maturity Assessment", "Understand how to assess IAM maturity: capability domains, evidence collection, scoring, and gap analysis.", "How do you interview business stakeholders to understand IAM pain points without technical jargon?", "Conduct a self-assessment of your IAM knowledge \u2014 score yourself on 10 key IAM capability areas."], [53, 8, 4, "IAM Business Case and ROI", "Study how to build a business case for IAM investment: risk quantification, productivity gains, compliance cost avoidance.", "How do you quantify the cost of a single identity-related breach to justify IAM spending?", "Build a simple IAM ROI model: list the benefits (cost avoided, hours saved) and investments required."], [54, 8, 4, "IAM Vendor Evaluation", "Study how to evaluate IAM vendors: RFP process, evaluation criteria, proof-of-concept design, and scoring methodology.", "What are the key criteria for evaluating an IGA platform vs a PAM platform \u2014 how do they differ?", "Create an IAM vendor evaluation scorecard with 10 criteria \u2014 explain how you would weight each one."], [55, 8, 4, "IAM Integration Architecture", "Study how IAM integrates with other systems: HR, ITSM, SIEM, directories, and cloud platforms using LDAP, SCIM, REST, webhooks.", "What are the integration risks when connecting IAM to 20 or more downstream systems? How do you manage them?", "Draw an IAM integration architecture for a typical enterprise \u2014 show data flows between each connected system."], [56, 8, 4, "Phase 4 Review and Self-Test", "Revise all architecture concepts: patterns, multi-cloud, threat modelling, Zero Trust, API security, scale, roadmap, ROI.", "Update and finalise your complete concept map \u2014 all 4 phases connected showing the full IAM landscape.", "Self-quiz: Present a 5-minute IAM architecture recommendation for a greenfield cloud-native company."], [57, 9, 5, "SC-300 Domain Overview", "Study SC-300 exam structure: 4 domains, their weightings, and the types of questions asked. Identify your strongest and weakest areas.", "Review the official SC-300 study guide and map each exam objective to concepts you have already studied.", "Take a full SC-300 practice test \u2014 identify which domains need the most revision."], [58, 9, 5, "SC-300: Identity and Access Domain 1", "Revise Domain 1 deeply: managing identities in Entra ID, external identities, hybrid identity, and authentication methods.", "Review every sub-objective in Domain 1 \u2014 flag any topic where you are not fully confident.", "Practice Domain 1 questions \u2014 aim for 80 percent or above before moving on."], [59, 9, 5, "SC-300: Auth and Access Management Domain 2", "Revise Domain 2: MFA, Conditional Access policies, identity protection, privileged identity management.", "Create a comparison table of all Conditional Access conditions and grant controls \u2014 know them cold.", "Practice Domain 2 questions \u2014 focus on scenario-based questions that require policy design decisions."], [60, 9, 5, "SC-300: App and Data Access Domain 3", "Revise Domain 3: enterprise app management, app registrations, OAuth consent, app roles, and managed identities.", "Understand the difference between delegated permissions and application permissions \u2014 when does each apply?", "Practice Domain 3 questions \u2014 focus on app registration and permission scope scenarios."], [61, 9, 5, "SC-300: Identity Governance Domain 4", "Revise Domain 4: access reviews, entitlement management, access packages, lifecycle workflows.", "Map each governance feature to a real-world use case \u2014 why would you choose each one?", "Practice Domain 4 questions \u2014 complete a full mock test across all domains and review weak areas."], [62, 9, 5, "SailPoint Certification Prep", "Study the SailPoint IdentityNow certification domains: identity security concepts, IGA principles, and product-agnostic governance.", "Review the SailPoint Compass learning path \u2014 identify which modules align with concepts you have already studied.", "Take the SailPoint practice assessment and identify your gap areas."], [63, 9, 5, "GitHub IAM Portfolio Setup", "Plan your IAM portfolio: what artefacts demonstrate your skills? Think architecture diagrams, policy documents, case studies.", "Review strong security portfolios on GitHub \u2014 what makes them impressive and credible?", "Create your GitHub profile README and IAM portfolio repo \u2014 write a clear introduction explaining your IAM journey."], [64, 10, 5, "Portfolio: IAM Architecture Write-Up", "Write an IAM architecture document for a hypothetical organisation \u2014 cover identity sources, authentication, authorisation, and governance.", "Review your Phase 4 architecture notes \u2014 select the strongest concepts to showcase.", "Publish a polished IAM architecture case study to your GitHub portfolio."], [65, 10, 5, "Portfolio: PAM Design Document", "Write a PAM design document: privileged account inventory, vaulting policy, JIT model, session monitoring, and break-glass procedure.", "Review your Phase 3 PAM notes \u2014 structure them into a professional design document.", "Publish a PAM design document to your GitHub portfolio."], [66, 10, 5, "Portfolio: IGA Program Proposal", "Write an IGA program proposal: scope, maturity assessment, quick wins, phased roadmap, and compliance benefits.", "Review your Phase 2 IGA notes \u2014 structure them into an executive-ready proposal.", "Publish an IGA program proposal to your GitHub portfolio."], [67, 10, 5, "LinkedIn Profile and Personal Branding", "Study how to present IAM expertise on LinkedIn: headline, about section, skills, and showcasing projects and certifications.", "Review profiles of senior IAM engineers and architects \u2014 what patterns make them stand out?", "Rewrite your LinkedIn headline and About section to reflect your IAM deep-dive and portfolio."], [68, 10, 5, "IAM Interview Preparation", "Study common IAM interview question types: conceptual, scenario-based, and architecture design. Prepare structured STAR answers.", "Review top IAM interview questions online \u2014 identify which ones you cannot answer confidently yet.", "Record yourself answering 5 IAM interview questions \u2014 review and improve clarity and confidence."], [69, 10, 5, "Final Review \u2014 All Phases", "Revise all concept maps from all 5 phases. Identify any remaining gaps and fill them.", "Review your entire GitHub portfolio \u2014 is each document clear, professional, and well-structured?", "Self-quiz: 20 rapid-fire IAM questions spanning all phases \u2014 no notes, timed at 30 seconds each."], [70, 10, 5, "Completion and Next Steps", "Reflect on your 10-week IAM journey \u2014 what have you learned, what surprised you, and what gaps remain?", "Research what comes next: advanced IAM topics, identity security specialisations, or community involvement.", "Schedule your SC-300 exam, share your portfolio publicly, and celebrate finishing the roadmap!"]];
+var PH={1:{n:'Core IAM',c:'var(--p1)',b:'var(--p1b)',h:'#3b6fd4'},2:{n:'IGA',c:'var(--p2)',b:'var(--p2b)',h:'#0ea472'},3:{n:'PAM',c:'var(--p3)',b:'var(--p3b)',h:'#7c3aed'},4:{n:'Arch',c:'var(--p4)',b:'var(--p4b)',h:'#c2710c'},5:{n:'Certs',c:'var(--p5)',b:'var(--p5b)',h:'#c0392b'}};
+var PH_RANGE={1:[1,14],2:[15,28],3:[29,42],4:[43,56],5:[57,70]};
+var PE={1:'&#x26A1;',2:'&#x1F33F;',3:'&#x1F510;',4:'&#x1F3D7;',5:'&#x1F3C6;'};
+var DAYS=[[1, 1, 1, "What is IAM? Core Concepts", "Understand what IAM is \u2014 Authentication vs Authorisation vs Access Control. Study the IAM triad: Identity, Access, Governance.", "Draw a diagram showing how identity flows from a user request to a resource access grant.", "Write a simple explanation of how IAM differs from basic username and password security.", [["What is Identity and Access Management?", "https://www.microsoft.com/en-us/security/business/security-101/what-is-identity-access-management-iam", "docs"], ["IAM Explained in 6 Minutes", "https://www.youtube.com/watch?v=Fcps9As9mIo", "video"], ["IAM Fundamentals - IBM", "https://www.ibm.com/topics/identity-access-management", "article"]]], [2, 1, 1, "Authentication Fundamentals", "Study the three authentication factors: something you know, have, and are. Understand single-factor vs multi-factor authentication.", "Compare how different authentication methods protect against phishing and credential theft.", "Case study: Analyse a real-world breach caused by weak authentication. What could IAM have prevented?", [["Authentication vs Authorisation", "https://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization", "docs"], ["Authentication Methods Explained", "https://www.youtube.com/watch?v=LB_lBMB1zeE", "video"], ["NIST Authentication Guidelines", "https://pages.nist.gov/800-63-3/sp800-63b.html", "docs"]]], [3, 1, 1, "SAML 2.0 \u2014 How It Works", "Understand SAML 2.0: what it is, why it exists, key components \u2014 IdP, SP, Assertion, Binding. Study SP-initiated vs IdP-initiated flows.", "Trace through a SAML login flow step by step on paper, from user click to access granted.", "Draw the SAML authentication flow diagram from scratch without looking at notes.", [["SAML 2.0 Explained", "https://www.youtube.com/watch?v=l-6QSEqDJPo", "video"], ["How SAML Works - Auth0", "https://auth0.com/blog/how-saml-authentication-works/", "article"], ["SAML Technical Overview - OASIS", "http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html", "docs"]]], [4, 1, 1, "OAuth 2.0 \u2014 Core Concepts", "Understand OAuth 2.0 grant types: Authorization Code, Client Credentials, Implicit, Device Flow. Know when to use each.", "Compare OAuth 2.0 with basic API key authentication \u2014 what problems does OAuth solve?", "Explain in plain language: what is an access token, who issues it, and how long should it live?", [["OAuth 2.0 Explained - Okta", "https://www.youtube.com/watch?v=996OiexHze0", "video"], ["OAuth 2.0 Simplified", "https://www.oauth.com/", "article"], ["RFC 6749 - OAuth 2.0 Spec", "https://tools.ietf.org/html/rfc6749", "docs"]]], [5, 1, 1, "OpenID Connect (OIDC)", "Understand how OIDC builds on OAuth 2.0 to add identity. Study ID token, UserInfo endpoint, and claims.", "Compare SAML vs OIDC \u2014 when would you choose one over the other in an enterprise?", "Write out what information is typically inside an ID token and why each field matters.", [["OpenID Connect Explained", "https://www.youtube.com/watch?v=6DxRTJN1Ffo", "video"], ["OIDC vs SAML - Auth0", "https://auth0.com/blog/saml-vs-oidc/", "article"], ["OpenID Connect Core Spec", "https://openid.net/specs/openid-connect-core-1_0.html", "docs"]]], [6, 1, 1, "Identity Lifecycle Management", "Study the Joiner/Mover/Leaver model. Understand provisioning, de-provisioning, and access modification triggers.", "Map out a complete employee lifecycle from hire to exit and list every IAM action needed at each stage.", "What are the risks if de-provisioning is delayed by even one day? Write 5 real-world scenarios.", [["Identity Lifecycle Management Explained", "https://www.youtube.com/watch?v=nN8ICJBR6rU", "video"], ["Joiner Mover Leaver Guide - SailPoint", "https://www.sailpoint.com/identity-library/joiner-mover-leaver/", "article"], ["Microsoft Entra Lifecycle Workflows", "https://learn.microsoft.com/en-us/entra/id-governance/what-are-lifecycle-workflows", "docs"]]], [7, 1, 1, "Single Sign-On (SSO) Concepts", "Understand what SSO is, how it works, the difference between SSO and federation. Study trust relationships between IdP and SP.", "List 5 benefits and 3 risks of implementing SSO across an organisation.", "Design a simple SSO architecture for a company with 3 internal apps and 2 cloud apps \u2014 on paper.", [["SSO Explained in 5 Minutes", "https://www.youtube.com/watch?v=O1cRJWYF-g4", "video"], ["Single Sign-On - How it Works", "https://auth0.com/blog/what-is-and-how-does-single-sign-on-work/", "article"], ["Microsoft Entra SSO Docs", "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/what-is-single-sign-on", "docs"]]], [8, 2, 1, "Multi-Factor Authentication (MFA)", "Study MFA types: TOTP, push notifications, FIDO2/WebAuthn, hardware keys, number matching. Understand phishing-resistant MFA.", "Compare the security strength of each MFA method. Which are phishing-resistant and why?", "Design an MFA policy for a hospital \u2014 balance security with clinical workflow urgency.", [["MFA Explained - Microsoft", "https://www.youtube.com/watch?v=0mvCeNsTa1g", "video"], ["Phishing Resistant MFA Guide - CISA", "https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf", "article"], ["FIDO2 WebAuthn Overview", "https://fidoalliance.org/fido2/", "docs"]]], [9, 2, 1, "Zero Trust Identity Principles", "Understand Zero Trust: never trust always verify. Study core principles \u2014 least privilege, micro-segmentation, continuous verification.", "How does Zero Trust change traditional perimeter-based security? Map the differences.", "Identify 3 scenarios where a VPN model would fail but Zero Trust would succeed.", [["Zero Trust Explained - Microsoft", "https://www.youtube.com/watch?v=yn8logYDWEk", "video"], ["NIST SP 800-207 Zero Trust Architecture", "https://csrc.nist.gov/publications/detail/sp/800-207/final", "docs"], ["Microsoft Zero Trust Guide", "https://www.microsoft.com/en-us/security/business/zero-trust", "article"]]], [10, 2, 1, "Directory Services Fundamentals", "Study what a directory service is \u2014 LDAP, Active Directory, cloud directories. Understand schema, OUs, attributes, and replication.", "Compare on-premises Active Directory vs a cloud-based identity directory \u2014 strengths and weaknesses.", "What happens to IAM if a directory service goes down? What are the failure modes?", [["Active Directory Explained", "https://www.youtube.com/watch?v=85-bp7XxWDQ", "video"], ["LDAP vs Active Directory", "https://www.varonis.com/blog/the-difference-between-active-directory-and-ldap", "article"], ["Microsoft Entra ID vs AD", "https://learn.microsoft.com/en-us/entra/fundamentals/compare", "docs"]]], [11, 2, 1, "Federation and Trust Models", "Understand identity federation: how organisations share identity across trust boundaries. Study trust levels and federation protocols.", "Explain cross-domain federation \u2014 how Company A can trust Company B's identity claims.", "Design a federation model for a university where students, staff, and external partners all need access.", [["Identity Federation Explained", "https://www.youtube.com/watch?v=nN8ICJBR6rU", "video"], ["Identity Federation - Ping Identity", "https://www.pingidentity.com/en/resources/identity-fundamentals/authentication/identity-federation.html", "article"], ["Entra B2B Federation Docs", "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b", "docs"]]], [12, 2, 1, "Session Management", "Study session tokens, session lifetime, idle timeout, absolute timeout, and session revocation. Understand refresh token patterns.", "What are the risks of long-lived sessions? How does session management impact user experience vs security?", "Define a session management policy for a financial services application \u2014 justify each decision.", [["Session Management Security - OWASP", "https://owasp.org/www-community/attacks/Session_hijacking_attack", "article"], ["Token Lifetime Policies - Microsoft", "https://learn.microsoft.com/en-us/entra/identity-platform/configurable-token-lifetimes", "docs"], ["Refresh Token Security Best Practices", "https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/", "article"]]], [13, 2, 1, "IAM Security Principles", "Study least privilege, separation of duties, need-to-know, and defence in depth as applied to identity and access.", "Review the OWASP Broken Access Control category \u2014 understand the top IAM-related vulnerabilities.", "Conduct a mini threat-model: list 5 ways an attacker could exploit a poorly designed IAM system.", [["OWASP Top 10 - Broken Access Control", "https://owasp.org/Top10/A01_2021-Broken_Access_Control/", "docs"], ["Least Privilege Principle Explained", "https://www.youtube.com/watch?v=qlmUFR7PfGw", "video"], ["CIS Controls for IAM", "https://www.cisecurity.org/controls/", "article"]]], [14, 2, 1, "Phase 1 Review and Self-Test", "Revise all Phase 1 concepts: Authentication types, SSO, SAML, OAuth, OIDC, JML, Zero Trust, federation, session management.", "Create a one-page concept map linking all Phase 1 topics \u2014 show how they connect to each other.", "Self-quiz: Explain each concept out loud as if teaching a new team member. No notes.", [["IAM Crash Course - Full Review", "https://www.youtube.com/watch?v=_KhrGFV_Npw", "video"], ["Identity Fundamentals Glossary - Auth0", "https://auth0.com/docs/get-started/identity-fundamentals", "docs"], ["IAM Overview - NIST", "https://csrc.nist.gov/glossary/term/identity_and_access_management", "docs"]]], [15, 3, 2, "What is IGA? Introduction", "Understand Identity Governance and Administration \u2014 what it is, why it matters, how it differs from basic IAM provisioning.", "Compare IGA with basic access management \u2014 what gaps does IGA fill that basic IAM cannot?", "Write a business case for IGA: what risks does it reduce and what compliance gaps does it close?", [["What is IGA? - SailPoint", "https://www.youtube.com/watch?v=4VFCPSj1TtA", "video"], ["IGA vs IAM - SailPoint Blog", "https://www.sailpoint.com/identity-library/iga-vs-iam/", "article"], ["Gartner IGA Market Guide", "https://www.gartner.com/en/documents/identity-governance-and-administration", "article"]]], [16, 3, 2, "Access Certification and Reviews", "Study access certification campaigns: what they are, who runs them, what triggers them, and what decisions are made.", "What are the consequences of rubber-stamping access reviews without real scrutiny? Give 3 examples.", "Design an access review process for a company with 500 users and 50 applications \u2014 who reviews what?", [["Access Certification Explained - SailPoint", "https://www.sailpoint.com/identity-library/access-certification/", "article"], ["Microsoft Entra Access Reviews", "https://learn.microsoft.com/en-us/entra/id-governance/access-reviews-overview", "docs"], ["Access Review Best Practices", "https://www.youtube.com/watch?v=VqMAKRMvK9g", "video"]]], [17, 3, 2, "Role-Based Access Control (RBAC)", "Understand RBAC deeply: role definition, role assignment, role hierarchy, and role mining from existing access patterns.", "Compare RBAC vs ABAC (Attribute-Based Access Control) \u2014 when does each model work better?", "Design an RBAC model for a hospital with doctors, nurses, admins, and billing staff.", [["RBAC vs ABAC Explained", "https://www.youtube.com/watch?v=rvZ8gSk71kM", "video"], ["NIST RBAC Model", "https://csrc.nist.gov/projects/role-based-access-control", "docs"], ["RBAC Best Practices - Okta", "https://www.okta.com/identity-101/what-is-role-based-access-control-rbac/", "article"]]], [18, 3, 2, "Segregation of Duties (SoD)", "Understand SoD: what it is, why it exists, toxic combinations, SoD conflicts, and compensating controls.", "Identify 5 classic SoD conflicts in a finance department \u2014 explain why each is a risk.", "Design a SoD matrix for a procurement process: request \u2014 approve \u2014 pay.", [["Segregation of Duties Explained", "https://www.youtube.com/watch?v=FhYD1bqxBZ4", "video"], ["SoD in IAM - SailPoint", "https://www.sailpoint.com/identity-library/segregation-of-duties/", "article"], ["SOX Compliance and SoD - ISACA", "https://www.isaca.org/resources/isaca-journal/past-issues/2011/segregation-of-duties-and-auditing", "article"]]], [19, 3, 2, "Automated Provisioning Concepts", "Study the SCIM protocol: what it is, how it enables automated provisioning and de-provisioning across systems.", "Compare manual vs automated provisioning \u2014 calculate the risk difference in a 1000-employee org.", "Map out how automated provisioning would work when a new employee joins a company with 10 cloud apps.", [["SCIM Protocol Explained", "https://www.youtube.com/watch?v=eHqe5NnmeME", "video"], ["SCIM 2.0 Specification", "https://datatracker.ietf.org/doc/html/rfc7644", "docs"], ["Automated Provisioning - Okta", "https://www.okta.com/identity-101/user-provisioning/", "article"]]], [20, 3, 2, "Identity Analytics and Risk Scoring", "Understand how identity analytics works: behaviour baselines, anomaly detection, risk scoring, and UEBA.", "What signals indicate a compromised identity? List 10 behavioural anomalies that should trigger alerts.", "Design a risk scoring model for user access \u2014 what factors increase risk and how would you weight them?", [["UEBA Explained - Microsoft", "https://www.youtube.com/watch?v=Y3M_EzEcpow", "video"], ["Identity Analytics - Gartner", "https://www.gartner.com/en/information-technology/glossary/user-and-entity-behavior-analytics-ueba", "article"], ["Microsoft Entra ID Protection", "https://learn.microsoft.com/en-us/entra/id-protection/overview-identity-protection", "docs"]]], [21, 3, 2, "Access Request and Approval Workflows", "Study self-service access request models, approval chains, business justification, time-bound access, and emergency access.", "What are the risks of an overly manual access request process? What about fully automated approval?", "Design an access request workflow for a sensitive financial application \u2014 who approves and under what conditions?", [["Access Request Workflows - SailPoint", "https://www.sailpoint.com/identity-library/access-request-management/", "article"], ["Entitlement Management - Microsoft", "https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-overview", "docs"], ["Zero Standing Privilege Access Requests", "https://www.youtube.com/watch?v=5Yd8Wt1bpHY", "video"]]], [22, 4, 2, "IGA Governance Frameworks", "Study governance frameworks for IAM: NIST, ISO 27001 identity controls, SOX access requirements, HIPAA IAM obligations.", "Map IAM controls to a compliance framework \u2014 which IGA capabilities satisfy which compliance requirements?", "What happens during an audit if access reviews have not been completed? What evidence do auditors look for?", [["ISO 27001 Identity Controls", "https://www.iso.org/standard/27001", "docs"], ["NIST SP 800-53 Access Control", "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final", "docs"], ["SOX IT Controls for IAM - ISACA", "https://www.isaca.org/resources/isaca-journal", "article"]]], [23, 4, 2, "IGA in Cloud Environments", "Understand the unique IGA challenges in cloud: ephemeral identities, API access, serverless, and multi-cloud identity sprawl.", "How does IGA need to evolve for cloud-native organisations vs traditional on-premises environments?", "Identify 5 cloud-specific identity risks that traditional IGA processes would miss.", [["Cloud IGA Challenges - SailPoint", "https://www.sailpoint.com/identity-library/cloud-identity-governance/", "article"], ["Identity in the Cloud - AWS", "https://aws.amazon.com/iam/", "docs"], ["Multi-Cloud Identity Sprawl", "https://www.youtube.com/watch?v=7wQ5EjBkq5E", "video"]]], [24, 4, 2, "Entitlement Management", "Study entitlement management: what entitlements are, entitlement catalogues, entitlement sprawl, and access lifecycle.", "What is entitlement creep and why does it happen? How does it create security risk?", "Design an entitlement catalogue for a mid-sized company \u2014 what metadata should each entitlement have?", [["Entitlement Management - Microsoft", "https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-overview", "docs"], ["Entitlement Sprawl Explained", "https://www.sailpoint.com/identity-library/entitlement-management/", "article"], ["Access Package Tutorial - Microsoft", "https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-access-package-first", "docs"]]], [25, 4, 2, "Joiner Mover Leaver in IGA", "Deep-dive into JML from an IGA perspective: automated triggers, birthright access, role changes, and immediate termination.", "What is the risk window between an employee resigning and their access being removed? How do you close it?", "Design an automated leaver process \u2014 list every system and every step in the right sequence.", [["Lifecycle Workflows - Microsoft", "https://learn.microsoft.com/en-us/entra/id-governance/what-are-lifecycle-workflows", "docs"], ["Automating JML - SailPoint", "https://www.sailpoint.com/identity-library/joiner-mover-leaver/", "article"], ["JML Automation Deep Dive", "https://www.youtube.com/watch?v=nN8ICJBR6rU", "video"]]], [26, 4, 2, "Audit Trails and Compliance Reporting", "Study what audit trails in IAM must capture: who did what, when, from where, and to which resource.", "What makes an audit trail legally defensible? What are the requirements for log integrity?", "Design an IAM audit report for a SOX audit \u2014 what data does the auditor need to see?", [["IAM Audit Logging Best Practices", "https://www.microsoft.com/en-us/security/blog/2019/12/17/access-reviews-in-azure-ad/", "article"], ["Microsoft Entra Audit Logs", "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-audit-logs", "docs"], ["SOX IT Audit Requirements", "https://www.isaca.org/resources/isaca-journal", "article"]]], [27, 4, 2, "IGA Program Design", "Understand how to build an IGA program: phases, stakeholders, scope, quick wins, and long-term maturity.", "What are the top 3 reasons IGA programs fail? How would you avoid each one?", "Draft a phased IGA implementation plan for a 200-person company starting from scratch.", [["Building an IGA Program - SailPoint", "https://www.sailpoint.com/identity-library/identity-governance-program/", "article"], ["IGA Maturity Model", "https://www.youtube.com/watch?v=4VFCPSj1TtA", "video"], ["Gartner IGA Best Practices", "https://www.gartner.com/en/documents/identity-governance-and-administration", "article"]]], [28, 4, 2, "Phase 2 Review and Self-Test", "Revise all IGA concepts: certification, RBAC, SoD, provisioning, analytics, governance, entitlements, JML.", "Update your concept map \u2014 add all Phase 2 topics and show how they connect to Phase 1.", "Self-quiz: Explain IGA's business value to a non-technical CFO in under 2 minutes. No notes.", [["IGA Full Overview - SailPoint", "https://www.sailpoint.com/identity-library/what-is-identity-governance/", "article"], ["Identity Governance Deep Dive", "https://www.youtube.com/watch?v=tnvJBToaU9c", "video"], ["Microsoft Identity Governance", "https://learn.microsoft.com/en-us/entra/id-governance/identity-governance-overview", "docs"]]], [29, 5, 3, "What is PAM? Core Concepts", "Understand Privileged Access Management: what privileged accounts are, why they are high-risk, and what PAM controls protect them.", "What makes a privileged account privileged? List 10 types of privileged accounts in a typical enterprise.", "Why do attackers target privileged accounts? Map the attack path from phishing to domain admin.", [["What is PAM? - CyberArk", "https://www.youtube.com/watch?v=Gy9WFM3RCCA", "video"], ["PAM Explained - CyberArk", "https://www.cyberark.com/what-is/privileged-access-management/", "article"], ["Gartner PAM Magic Quadrant Overview", "https://www.gartner.com/en/documents/privileged-access-management", "article"]]], [30, 5, 3, "Privileged Account Discovery", "Study how privileged accounts are discovered: scanning, agent-based discovery, directory queries, and shadow admin detection.", "What are shadow admins and why are they dangerous? How do they typically get created?", "Design a privileged account discovery process for an org that has never done PAM before.", [["Shadow Admin Detection", "https://www.youtube.com/watch?v=eqcbWRi9rYU", "video"], ["Privileged Account Discovery Guide", "https://www.cyberark.com/resources/blog/how-to-discover-privileged-accounts", "article"], ["MITRE ATT&CK Privilege Escalation", "https://attack.mitre.org/tactics/TA0004/", "docs"]]], [31, 5, 3, "Credential Vaulting Concepts", "Understand credential vaulting: how passwords are stored, encrypted, rotated, and checked in and out by users and systems.", "Why is shared admin password usage dangerous? What are the forensic implications during an incident?", "Design a credential vaulting policy: rotation frequency, who can check out, approval requirements, emergency access.", [["Credential Vaulting Explained", "https://www.cyberark.com/what-is/privileged-account-security/", "article"], ["Password Vaulting Deep Dive", "https://www.youtube.com/watch?v=Gy9WFM3RCCA", "video"], ["CyberArk Vault Architecture", "https://docs.cyberark.com/PAS/Latest/en/Content/PASIMP/How-Enterprise-Password-Vault-Works.htm", "docs"]]], [32, 5, 3, "Just-in-Time (JIT) Access", "Understand JIT access: provisioning access only when needed, for a limited time, with full audit trail, then revoking it.", "Compare standing privilege vs just-in-time access \u2014 what attack surface does JIT reduce?", "Design a JIT access model for a cloud infrastructure team that needs periodic admin access to production.", [["Just-in-Time Access Explained", "https://www.youtube.com/watch?v=5Yd8Wt1bpHY", "video"], ["Azure PIM - JIT Access", "https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure", "docs"], ["Zero Standing Privilege - CyberArk", "https://www.cyberark.com/resources/blog/just-in-time-access", "article"]]], [33, 5, 3, "Privileged Session Management", "Study privileged session management: session proxying, recording, real-time monitoring, and session termination.", "Why is session recording important for compliance and incident response? What should be captured?", "Design session monitoring rules: what user actions during a privileged session should trigger an alert?", [["Privileged Session Management - CyberArk", "https://www.cyberark.com/what-is/privileged-session-management/", "article"], ["Session Recording for Compliance", "https://www.youtube.com/watch?v=Gy9WFM3RCCA", "video"], ["PSM Best Practices", "https://docs.cyberark.com/PAS/Latest/en/Content/PASIMP/PSM-Best-Practices.htm", "docs"]]], [34, 5, 3, "Privileged Identity Management (PIM)", "Study PIM concepts: eligible vs active roles, time-bound activation, approval workflows, and access reviews for privileged roles.", "What is the difference between PAM and PIM? How do they complement each other?", "Design a PIM policy for a cloud administrator role \u2014 activation conditions, duration limits, and approval chain.", [["Azure PIM Deep Dive - John Savill", "https://www.youtube.com/watch?v=gqe9GpKbRMM", "video"], ["Microsoft Entra PIM Docs", "https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure", "docs"], ["PIM vs PAM Explained", "https://www.cyberark.com/resources/blog/pam-vs-pim", "article"]]], [35, 5, 3, "Service Accounts and Non-Human Identities", "Understand service accounts: what they are, why they are risky, how they differ from human accounts, and how to govern them.", "Why do service accounts often have excessive privileges? What lifecycle challenges do they create?", "Design a service account governance policy: naming conventions, password rotation, owner accountability.", [["Service Account Security Risks", "https://www.youtube.com/watch?v=eqcbWRi9rYU", "video"], ["Non-Human Identity Security - CyberArk", "https://www.cyberark.com/what-is/service-accounts/", "article"], ["Managed Identities - Azure", "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview", "docs"]]], [36, 6, 3, "Secrets Management Concepts", "Study secrets management: what secrets are \u2014 API keys, certificates, tokens \u2014 how they leak, and how vaulting protects them.", "How do hardcoded secrets in code repositories create security risk? What are the common patterns?", "Design a secrets management policy for a development team: how are secrets stored, rotated, and audited?", [["Secrets Management Explained - HashiCorp", "https://www.youtube.com/watch?v=VYfl-DpZ5wM", "video"], ["HashiCorp Vault Introduction", "https://developer.hashicorp.com/vault/docs/what-is-vault", "docs"], ["Azure Key Vault Overview", "https://learn.microsoft.com/en-us/azure/key-vault/general/overview", "docs"]]], [37, 6, 3, "Break-Glass Access", "Study break-glass emergency access: what it is, when it is used, how it is controlled, and how it is audited.", "What controls must exist around break-glass accounts to prevent misuse while ensuring availability in a crisis?", "Design a break-glass access procedure: who triggers it, how is it approved, what is logged, and who reviews afterward?", [["Emergency Access Accounts - Microsoft", "https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access", "docs"], ["Break Glass Account Best Practices", "https://www.youtube.com/watch?v=J8MZ_VJhBuQ", "video"], ["NIST Break Glass Guidance", "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final", "docs"]]], [38, 6, 3, "Least Privilege in PAM", "Study applying least privilege to privileged access: privilege tiering, admin workstations, and just-enough-administration.", "What is privilege creep in admin accounts and how does it happen over time?", "Redesign a typical IT admin role using least privilege principles \u2014 what permissions are truly necessary?", [["Least Privilege Explained", "https://www.youtube.com/watch?v=qlmUFR7PfGw", "video"], ["Just Enough Administration - Microsoft", "https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/jea/overview", "docs"], ["Privilege Tiering Model - Microsoft", "https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model", "docs"]]], [39, 6, 3, "PAM for Cloud Infrastructure", "Understand PAM in cloud environments: role assumption, temporary credentials, service-linked roles, and cloud-native privileged access.", "How does privileged access in cloud differ from on-premises? What traditional PAM controls do not apply?", "Map the privileged access risks unique to a multi-cloud environment and propose controls for each.", [["Cloud PAM - AWS IAM Best Practices", "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html", "docs"], ["Cloud Privileged Access - CyberArk", "https://www.cyberark.com/resources/blog/cloud-privileged-access-management", "article"], ["Azure Privileged Identity Management", "https://www.youtube.com/watch?v=gqe9GpKbRMM", "video"]]], [40, 6, 3, "PAM Metrics and Maturity", "Study PAM maturity levels and key metrics: vaulted account coverage, orphaned account count, session recording coverage, JIT adoption.", "What does a PAM maturity model look like? Identify what capabilities exist at each maturity level.", "Design a PAM KPI dashboard: what metrics would you show leadership to demonstrate PAM program health?", [["PAM Maturity Model - CyberArk", "https://www.cyberark.com/resources/blog/pam-maturity-model", "article"], ["Security Metrics for PAM", "https://www.youtube.com/watch?v=Gy9WFM3RCCA", "video"], ["NIST Cybersecurity Framework", "https://www.nist.gov/cyberframework", "docs"]]], [41, 6, 3, "IGA and PAM Integration", "Understand how IGA and PAM must work together: access certifications for privileged roles, JML triggers for admin accounts.", "What gaps exist if an organisation has PAM but no IGA, or IGA but no PAM?", "Design how IGA and PAM should integrate: which events in IGA should trigger what actions in PAM?", [["IGA and PAM Integration - SailPoint", "https://www.sailpoint.com/integrations/cyberark/", "article"], ["Identity Security Platform - CyberArk", "https://www.cyberark.com/products/", "article"], ["PAM and IGA Together - YouTube", "https://www.youtube.com/watch?v=tnvJBToaU9c", "video"]]], [42, 6, 3, "Phase 3 Review and Self-Test", "Revise all PAM concepts: privileged accounts, vaulting, JIT, session management, secrets, break-glass, cloud PAM.", "Update your concept map \u2014 add all Phase 3 topics and show connections to Phase 1 and 2.", "Self-quiz: Explain PAM to a sceptical CISO who thinks basic AD admin controls are sufficient.", [["PAM Complete Overview - CyberArk", "https://www.cyberark.com/what-is/privileged-access-management/", "article"], ["PAM Deep Dive Video", "https://www.youtube.com/watch?v=Gy9WFM3RCCA", "video"], ["NIST PAM Guidance", "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final", "docs"]]], [43, 7, 4, "IAM Architecture Patterns", "Study centralised vs federated vs decentralised IAM architectures. Understand hub-and-spoke, mesh, and hybrid models.", "What are the trade-offs between a centralised IAM architecture and a federated one?", "Draw IAM architecture options for a multinational enterprise with 10 subsidiaries \u2014 compare the models.", [["IAM Architecture Patterns - Gartner", "https://www.gartner.com/en/documents/identity-and-access-management", "article"], ["Identity Architecture Deep Dive - John Savill", "https://www.youtube.com/watch?v=51gv68v2_6Q", "video"], ["Microsoft Identity Platform Architecture", "https://learn.microsoft.com/en-us/entra/identity-platform/v2-overview", "docs"]]], [44, 7, 4, "Multi-Cloud Identity Challenges", "Study identity management across multiple cloud providers: identity silos, different RBAC models, and federation across clouds.", "What happens when the same user needs access to multiple clouds \u2014 how do you manage identity consistently?", "Design a multi-cloud identity strategy: how should identities be managed, federated, and governed across 3 clouds?", [["Multi-Cloud Identity - AWS + Azure", "https://www.youtube.com/watch?v=7wQ5EjBkq5E", "video"], ["Workload Identity Federation - Google", "https://cloud.google.com/iam/docs/workload-identity-federation", "docs"], ["Multi-Cloud IAM Challenges - Gartner", "https://www.gartner.com/en/documents/cloud-iam", "article"]]], [45, 7, 4, "IAM Threat Modeling", "Study identity-related threats: credential stuffing, pass-the-hash, token theft, privilege escalation, lateral movement.", "Map 5 attack scenarios using MITRE ATT&CK identity techniques \u2014 trace attacker steps end to end.", "Apply STRIDE threat modeling to an IAM system \u2014 identify threats for each STRIDE category.", [["MITRE ATT&CK Identity Techniques", "https://attack.mitre.org/tactics/TA0006/", "docs"], ["Pass the Hash Attack Explained", "https://www.youtube.com/watch?v=aSOggBckfS4", "video"], ["IAM Threat Modeling - Microsoft", "https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool", "docs"]]], [46, 7, 4, "Zero Trust Architecture Design", "Study Zero Trust Architecture reference models: NIST SP 800-207, policy engine, policy administrator, policy enforcement point.", "How does identity serve as the control plane in a Zero Trust model? What changes from perimeter security?", "Design a Zero Trust architecture for a hybrid organisation \u2014 map each ZTA component to real controls.", [["NIST SP 800-207 Zero Trust", "https://csrc.nist.gov/publications/detail/sp/800-207/final", "docs"], ["Zero Trust Architecture - John Savill", "https://www.youtube.com/watch?v=yn8logYDWEk", "video"], ["Microsoft Zero Trust Deployment", "https://learn.microsoft.com/en-us/security/zero-trust/", "docs"]]], [47, 7, 4, "API Security and Identity", "Understand how identity applies to APIs: OAuth scopes, API gateway authentication, token validation, and API-specific threats.", "What are the OWASP API Security Top 10 risks related to identity and access? Study each one.", "Design an API security model: how should a public API authenticate callers and enforce authorisation?", [["OWASP API Security Top 10", "https://owasp.org/www-project-api-security/", "docs"], ["API Security with OAuth - YouTube", "https://www.youtube.com/watch?v=996OiexHze0", "video"], ["API Gateway Auth - AWS", "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html", "docs"]]], [48, 7, 4, "IAM for SaaS and Cloud Apps", "Study the identity challenges of SaaS adoption: shadow IT, inconsistent access controls, data residency, and offboarding gaps.", "How does a Cloud Access Security Broker complement IAM for SaaS governance?", "Design an identity strategy for a company moving 20 applications to SaaS over 12 months.", [["CASB Explained - Microsoft", "https://www.youtube.com/watch?v=mCb5FVFJ_MM", "video"], ["Microsoft Defender for Cloud Apps", "https://learn.microsoft.com/en-us/defender-cloud-apps/what-is-defender-for-cloud-apps", "docs"], ["SaaS Identity Challenges - Okta", "https://www.okta.com/blog/2021/05/saas-identity-management/", "article"]]], [49, 7, 4, "IAM Policy and Standards Design", "Study how to write IAM policies, standards, and procedures. Understand the hierarchy: policy, standard, procedure, guideline.", "What should an enterprise IAM policy cover? Review examples from NIST and ISO frameworks.", "Draft a 1-page IAM policy for a hypothetical mid-sized company \u2014 include scope, principles, and key requirements.", [["Writing Security Policies - SANS", "https://www.sans.org/information-security-policy/", "article"], ["NIST SP 800-53 Policy Controls", "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final", "docs"], ["ISO 27001 Policy Requirements", "https://www.iso.org/standard/27001", "docs"]]], [50, 8, 4, "Designing IAM for Scale", "Study IAM architecture at scale: high availability, disaster recovery, performance, directory replication, and global distribution.", "What breaks in IAM when an organisation grows from 1,000 to 100,000 users? Map the failure points.", "Design a highly available IAM architecture for a global company \u2014 what redundancy is needed at each layer?", [["Entra ID High Availability", "https://learn.microsoft.com/en-us/entra/architecture/resilience-overview", "docs"], ["IAM at Scale - Okta", "https://www.okta.com/resources/whitepaper/identity-at-scale/", "article"], ["Active Directory DR Planning", "https://www.youtube.com/watch?v=85-bp7XxWDQ", "video"]]], [51, 8, 4, "IAM Roadmap and Strategy", "Study how to build an IAM roadmap: current state assessment, maturity gaps, prioritisation, phasing, and business alignment.", "What is an IAM maturity model? Map the capabilities at each maturity level from Level 1 to Level 5.", "Create a 3-year IAM roadmap for a company currently at maturity Level 1 \u2014 what gets done when and why?", [["Building an IAM Roadmap - Gartner", "https://www.gartner.com/en/documents/iam-roadmap", "article"], ["IAM Strategy Framework", "https://www.youtube.com/watch?v=_KhrGFV_Npw", "video"], ["Microsoft Identity Roadmap", "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new", "docs"]]], [52, 8, 4, "IAM Maturity Assessment", "Understand how to assess IAM maturity: capability domains, evidence collection, scoring, and gap analysis.", "How do you interview business stakeholders to understand IAM pain points without technical jargon?", "Conduct a self-assessment of your IAM knowledge \u2014 score yourself on 10 key IAM capability areas.", [["IAM Maturity Model - Gartner", "https://www.gartner.com/en/documents/iam-maturity", "article"], ["CMMI for Security", "https://cmmiinstitute.com/", "docs"], ["Security Maturity Assessment Guide", "https://www.youtube.com/watch?v=X3BxWNvsExo", "video"]]], [53, 8, 4, "IAM Business Case and ROI", "Study how to build a business case for IAM investment: risk quantification, productivity gains, compliance cost avoidance.", "How do you quantify the cost of a single identity-related breach to justify IAM spending?", "Build a simple IAM ROI model: list the benefits (cost avoided, hours saved) and investments required.", [["Cost of a Data Breach Report - IBM", "https://www.ibm.com/reports/data-breach", "article"], ["Building a Security Business Case", "https://www.youtube.com/watch?v=SoMMJHOgFc4", "video"], ["Forrester IAM ROI Study", "https://www.forrester.com/report/total-economic-impact", "article"]]], [54, 8, 4, "IAM Vendor Evaluation", "Study how to evaluate IAM vendors: RFP process, evaluation criteria, proof-of-concept design, and scoring methodology.", "What are the key criteria for evaluating an IGA platform vs a PAM platform \u2014 how do they differ?", "Create an IAM vendor evaluation scorecard with 10 criteria \u2014 explain how you would weight each one.", [["Gartner Magic Quadrant IAM", "https://www.gartner.com/en/documents/magic-quadrant-access-management", "article"], ["Vendor Evaluation Framework", "https://www.youtube.com/watch?v=W4gRjAbMQeo", "video"], ["RFP Guide for IAM Tools - ISACA", "https://www.isaca.org/resources", "article"]]], [55, 8, 4, "IAM Integration Architecture", "Study how IAM integrates with other systems: HR, ITSM, SIEM, directories, and cloud platforms using LDAP, SCIM, REST, webhooks.", "What are the integration risks when connecting IAM to 20 or more downstream systems? How do you manage them?", "Draw an IAM integration architecture for a typical enterprise \u2014 show data flows between each connected system.", [["SCIM Integration Patterns", "https://datatracker.ietf.org/doc/html/rfc7644", "docs"], ["IAM and SIEM Integration", "https://www.youtube.com/watch?v=Y3M_EzEcpow", "video"], ["Microsoft Identity Integration", "https://learn.microsoft.com/en-us/entra/architecture/auth-sync-overview", "docs"]]], [56, 8, 4, "Phase 4 Review and Self-Test", "Revise all architecture concepts: patterns, multi-cloud, threat modelling, Zero Trust, API security, scale, roadmap, ROI.", "Update and finalise your complete concept map \u2014 all 4 phases connected showing the full IAM landscape.", "Self-quiz: Present a 5-minute IAM architecture recommendation for a greenfield cloud-native company.", [["IAM Architecture Full Review", "https://www.youtube.com/watch?v=51gv68v2_6Q", "video"], ["Microsoft Identity Architecture", "https://learn.microsoft.com/en-us/entra/architecture/", "docs"], ["Zero Trust Reference Architecture", "https://www.microsoft.com/en-us/security/blog/zero-trust", "article"]]], [57, 9, 5, "SC-300 Domain Overview", "Study SC-300 exam structure: 4 domains, their weightings, and the types of questions asked. Identify your strongest and weakest areas.", "Review the official SC-300 study guide and map each exam objective to concepts you have already studied.", "Take a full SC-300 practice test \u2014 identify which domains need the most revision.", [["SC-300 Study Guide - Microsoft", "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/sc-300", "docs"], ["SC-300 Full Course - YouTube", "https://www.youtube.com/watch?v=LgKZKH0jRV4", "video"], ["SC-300 Practice Tests - MeasureUp", "https://www.measureup.com/sc-300-microsoft-identity-and-access-administrator.html", "article"]]], [58, 9, 5, "SC-300: Identity and Access Domain 1", "Revise Domain 1 deeply: managing identities in Entra ID, external identities, hybrid identity, and authentication methods.", "Review every sub-objective in Domain 1 \u2014 flag any topic where you are not fully confident.", "Practice Domain 1 questions \u2014 aim for 80 percent or above before moving on.", [["Entra ID Identity Management - John Savill", "https://www.youtube.com/watch?v=51gv68v2_6Q", "video"], ["SC-300 Domain 1 - Microsoft Learn", "https://learn.microsoft.com/en-us/training/paths/implement-manage-identity/", "docs"], ["External Identities Deep Dive", "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b", "docs"]]], [59, 9, 5, "SC-300: Auth and Access Management Domain 2", "Revise Domain 2: MFA, Conditional Access policies, identity protection, privileged identity management.", "Create a comparison table of all Conditional Access conditions and grant controls \u2014 know them cold.", "Practice Domain 2 questions \u2014 focus on scenario-based questions that require policy design decisions.", [["Conditional Access Deep Dive - John Savill", "https://www.youtube.com/watch?v=QaHlToHzMCs", "video"], ["SC-300 Domain 2 - Microsoft Learn", "https://learn.microsoft.com/en-us/training/paths/implement-authentication-access-management/", "docs"], ["Conditional Access Policy Design", "https://learn.microsoft.com/en-us/entra/identity/conditional-access/plan-conditional-access", "docs"]]], [60, 9, 5, "SC-300: App and Data Access Domain 3", "Revise Domain 3: enterprise app management, app registrations, OAuth consent, app roles, and managed identities.", "Understand the difference between delegated permissions and application permissions \u2014 when does each apply?", "Practice Domain 3 questions \u2014 focus on app registration and permission scope scenarios.", [["App Registrations - John Savill", "https://www.youtube.com/watch?v=Jmpn7jEwWzg", "video"], ["SC-300 Domain 3 - Microsoft Learn", "https://learn.microsoft.com/en-us/training/paths/implement-access-management-apps/", "docs"], ["Managed Identities Overview", "https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview", "docs"]]], [61, 9, 5, "SC-300: Identity Governance Domain 4", "Revise Domain 4: access reviews, entitlement management, access packages, lifecycle workflows.", "Map each governance feature to a real-world use case \u2014 why would you choose each one?", "Practice Domain 4 questions \u2014 complete a full mock test across all domains and review weak areas.", [["Identity Governance - John Savill", "https://www.youtube.com/watch?v=gqe9GpKbRMM", "video"], ["SC-300 Domain 4 - Microsoft Learn", "https://learn.microsoft.com/en-us/training/paths/plan-implement-identity-governance-strategy/", "docs"], ["Access Reviews Tutorial", "https://learn.microsoft.com/en-us/entra/id-governance/access-reviews-overview", "docs"]]], [62, 9, 5, "SailPoint Certification Prep", "Study the SailPoint IdentityNow certification domains: identity security concepts, IGA principles, and product-agnostic governance.", "Review the SailPoint Compass learning path \u2014 identify which modules align with concepts you have already studied.", "Take the SailPoint practice assessment and identify your gap areas.", [["SailPoint Compass Learning", "https://compass.sailpoint.com", "docs"], ["SailPoint IdentityNow Overview", "https://www.youtube.com/watch?v=4VFCPSj1TtA", "video"], ["SailPoint Certification Guide", "https://www.sailpoint.com/products/identitynow/", "article"]]], [63, 9, 5, "GitHub IAM Portfolio Setup", "Plan your IAM portfolio: what artefacts demonstrate your skills? Think architecture diagrams, policy documents, case studies.", "Review strong security portfolios on GitHub \u2014 what makes them impressive and credible?", "Create your GitHub profile README and IAM portfolio repo \u2014 write a clear introduction explaining your IAM journey.", [["GitHub Profile README Guide", "https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme", "docs"], ["Building a Security Portfolio", "https://www.youtube.com/watch?v=N7MR2jHJCD8", "video"], ["GitHub Pages for Portfolio", "https://pages.github.com/", "docs"]]], [64, 10, 5, "Portfolio: IAM Architecture Write-Up", "Write an IAM architecture document for a hypothetical organisation \u2014 cover identity sources, authentication, authorisation, and governance.", "Review your Phase 4 architecture notes \u2014 select the strongest concepts to showcase.", "Publish a polished IAM architecture case study to your GitHub portfolio.", [["IAM Architecture Template", "https://learn.microsoft.com/en-us/entra/architecture/", "docs"], ["Writing Technical Case Studies", "https://www.youtube.com/watch?v=SoMMJHOgFc4", "video"], ["Security Architecture Frameworks", "https://www.ncsc.gov.uk/collection/cyber-security-design-principles", "article"]]], [65, 10, 5, "Portfolio: PAM Design Document", "Write a PAM design document: privileged account inventory, vaulting policy, JIT model, session monitoring, and break-glass procedure.", "Review your Phase 3 PAM notes \u2014 structure them into a professional design document.", "Publish a PAM design document to your GitHub portfolio.", [["PAM Design Best Practices - CyberArk", "https://www.cyberark.com/resources/", "article"], ["Writing Security Design Docs", "https://www.youtube.com/watch?v=Gy9WFM3RCCA", "video"], ["CyberArk Blueprint Docs", "https://docs.cyberark.com/", "docs"]]], [66, 10, 5, "Portfolio: IGA Program Proposal", "Write an IGA program proposal: scope, maturity assessment, quick wins, phased roadmap, and compliance benefits.", "Review your Phase 2 IGA notes \u2014 structure them into an executive-ready proposal.", "Publish an IGA program proposal to your GitHub portfolio.", [["IGA Program Guide - SailPoint", "https://www.sailpoint.com/identity-library/identity-governance-program/", "article"], ["Executive Security Proposals", "https://www.youtube.com/watch?v=tnvJBToaU9c", "video"], ["ISACA IGA Framework", "https://www.isaca.org/resources", "docs"]]], [67, 10, 5, "LinkedIn Profile and Personal Branding", "Study how to present IAM expertise on LinkedIn: headline, about section, skills, and showcasing projects and certifications.", "Review profiles of senior IAM engineers and architects \u2014 what patterns make them stand out?", "Rewrite your LinkedIn headline and About section to reflect your IAM deep-dive and portfolio.", [["LinkedIn Profile for Tech Professionals", "https://www.youtube.com/watch?v=BvMSLFnhDSA", "video"], ["Personal Branding for Security Pros", "https://www.linkedin.com/learning/topics/personal-branding", "article"], ["LinkedIn Security Community", "https://www.linkedin.com/groups/", "article"]]], [68, 10, 5, "IAM Interview Preparation", "Study common IAM interview question types: conceptual, scenario-based, and architecture design. Prepare structured STAR answers.", "Review top IAM interview questions online \u2014 identify which ones you cannot answer confidently yet.", "Record yourself answering 5 IAM interview questions \u2014 review and improve clarity and confidence.", [["IAM Interview Questions - YouTube", "https://www.youtube.com/watch?v=_KhrGFV_Npw", "video"], ["Identity Security Interview Prep", "https://www.sailpoint.com/identity-library/", "article"], ["STAR Method Interview Technique", "https://www.themuse.com/advice/star-interview-method", "article"]]], [69, 10, 5, "Final Review \u2014 All Phases", "Revise all concept maps from all 5 phases. Identify any remaining gaps and fill them.", "Review your entire GitHub portfolio \u2014 is each document clear, professional, and well-structured?", "Self-quiz: 20 rapid-fire IAM questions spanning all phases \u2014 no notes, timed at 30 seconds each.", [["IAM Full Revision - Microsoft Learn", "https://learn.microsoft.com/en-us/credentials/certifications/identity-and-access-administrator/", "docs"], ["Identity Security Complete Review", "https://www.youtube.com/watch?v=LgKZKH0jRV4", "video"], ["SailPoint Identity Library", "https://www.sailpoint.com/identity-library/", "article"]]], [70, 10, 5, "Completion and Next Steps", "Reflect on your 10-week IAM journey \u2014 what have you learned, what surprised you, and what gaps remain?", "Research what comes next: advanced IAM topics, identity security specialisations, or community involvement.", "Schedule your SC-300 exam, share your portfolio publicly, and celebrate finishing the roadmap!", [["SC-300 Exam Registration", "https://learn.microsoft.com/en-us/credentials/certifications/identity-and-access-administrator/", "docs"], ["Identity Security Community - IDPro", "https://idpro.org/", "article"], ["Next Steps in IAM Career", "https://www.youtube.com/watch?v=N7MR2jHJCD8", "video"]]]];
 var TI=['&#x1F4D6;','&#x1F50D;','&#x270D;&#xFE0F;'];
 var TT=['Theory','Explore','Practice'];
 var TM=['20 min','15 min','10 min'];
-var TB=['rgba(79,142,247,0.08)','rgba(22,163,74,0.08)','rgba(147,51,234,0.08)'];
-var PE={1:'&#x26A1;',2:'&#x1F33F;',3:'&#x1F510;',4:'&#x1F3D7;',5:'&#x1F3C6;'};
-var SK='iam_v5';
+var TB=['rgba(59,111,212,0.08)','rgba(14,164,114,0.08)','rgba(124,58,237,0.08)'];
+var SK='iam_v7';
 function ld(){try{return JSON.parse(localStorage.getItem(SK)||'{}')}catch(e){return{}}}
 var D=ld();
-if(!D.statuses)D.statuses={};
-if(!D.timers)D.timers={};
-if(!D.scores)D.scores={};
-if(!D.theme)D.theme='light';
-function sd(){localStorage.setItem(SK,JSON.stringify(D));}
-var openSet={};var activePhase=0;var searchTerm='';var RT={};var TS={};
-document.documentElement.setAttribute('data-theme',D.theme);
-document.getElementById('thbtn').innerHTML=D.theme==='dark'?'&#x2600;&#xFE0F;':'&#x1F319;';
-function toggleTheme(){var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);document.getElementById('thbtn').innerHTML=n==='dark'?'&#x2600;&#xFE0F;':'&#x1F319;';D.theme=n;sd();}
-function gst(d){return D.statuses[d]||'pending';}
-function sst(d,v){D.statuses[d]=v;sd();}
-function fmt(s){var h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return h>0?(pad(h)+':'+pad(m)+':'+pad(sec)):(pad(m)+':'+pad(sec));}
+if(!D.st)D.st={};if(!D.tm)D.tm={};if(!D.sc)D.sc={};if(!D.th)D.th='light';
+function save(){localStorage.setItem(SK,JSON.stringify(D));}
+var openCards={};var activePhase=0;var srch='';var RT={};var TS={};
+document.documentElement.setAttribute('data-theme',D.th);
+document.getElementById('theme-btn').innerHTML=D.th==='dark'?'&#x2600;&#xFE0F;':'&#x1F319;';
+function toggleTheme(){var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);document.getElementById('theme-btn').innerHTML=n==='dark'?'&#x2600;&#xFE0F;':'&#x1F319;';D.th=n;save();}
+function gst(d){return D.st[d]||'pending';}
+function sst(d,v){D.st[d]=v;save();}
 function pad(n){return String(n).padStart(2,'0');}
+function fmt(s){var h=Math.floor(s/3600),m=Math.floor((s%3600)/60),x=s%60;return h>0?(pad(h)+':'+pad(m)+':'+pad(x)):(pad(m)+':'+pad(x));}
+function grade(v){return v>=90?'A+':v>=80?'A':v>=70?'B+':v>=60?'B':v>=50?'C':'D';}
+function scoreCol(v){return v>=80?'#0ea472':v>=60?'#c2710c':'#c0392b';}
 function startTmr(d){
   if(RT[d])return;
-  var base=D.timers[d]||0;TS[d]=base;
+  var base=D.tm[d]||0;TS[d]=base;
   var t0=Date.now()-base*1000;
   RT[d]=setInterval(function(){TS[d]=Math.floor((Date.now()-t0)/1000);var el=document.getElementById('tmr-'+d);if(el)el.textContent=fmt(TS[d]);},1000);
   updTBtn(d);
 }
-function pauseTmr(d){if(!RT[d])return;clearInterval(RT[d]);delete RT[d];D.timers[d]=TS[d]||0;sd();updTBtn(d);}
-function updTBtn(d){var b=document.getElementById('tb-'+d);if(!b)return;if(RT[d]){b.textContent='Pause';b.className='tbtn run';}else{b.textContent=(TS[d]||0)>0?'Resume':'Start';b.className=(TS[d]||0)>0?'tbtn':'tbtn go';}}
+function pauseTmr(d){if(!RT[d])return;clearInterval(RT[d]);delete RT[d];D.tm[d]=TS[d]||0;save();updTBtn(d);}
+function updTBtn(d){var b=document.getElementById('tb-'+d);if(!b)return;if(RT[d]){b.textContent='&#x23F8; Pause';b.className='tbtn run';}else{b.textContent=(TS[d]||0)>0?'&#x25B6; Resume':'&#x25B6; Start';b.className=(TS[d]||0)>0?'tbtn':'tbtn go';}}
 function togTmr(d){RT[d]?pauseTmr(d):startTmr(d);}
-function rstTmr(d){pauseTmr(d);TS[d]=0;D.timers[d]=0;sd();var el=document.getElementById('tmr-'+d);if(el)el.textContent='00:00';var b=document.getElementById('tb-'+d);if(b){b.textContent='Start';b.className='tbtn go';}}
-function saveSc(d){var inp=document.getElementById('si-'+d);if(!inp)return;var v=Math.min(100,Math.max(0,parseInt(inp.value)||0));inp.value=v;D.scores[d]=v;sd();var r=document.getElementById('sr-'+d);if(r){var e=v>=80?'&#x1F389;':v>=60?'&#x1F44D;':v>=40?'&#x1F4DA;':'&#x1F4AA;';var c=v>=80?'var(--p2)':v>=60?'var(--p4)':'var(--p5)';r.style.color=c;r.innerHTML=e+' '+v+'% &mdash; '+(v>=80?'Excellent!':v>=60?'Good!':v>=40?'Keep revising':'More practice needed');}showToast('Score '+v+'% saved! '+(v>=80?'&#x1F389;':'&#x1F4DA;'));render();}
-function handleStart(d,e){e.stopPropagation();var st=gst(d);if(st==='pending'){sst(d,'inprog');openSet[d]=true;startTmr(d);showToast('Timer started! Study hard &#x1F4AA;');}else if(st==='inprog'){pauseTmr(d);sst(d,'done');showToast('Day Complete! &#x1F389;');}else{sst(d,'pending');showToast('Reset to pending &#x21A9;');}render();}
-function togOpen(d){openSet[d]=!openSet[d];render();}
-function setPhase(p,btn){activePhase=p;document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');render();}
-function setSearch(v){searchTerm=v.toLowerCase();render();}
-function showToast(msg){var t=document.getElementById('toast');t.innerHTML=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2400);}
-function switchTab(tab,el){document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.ni').forEach(function(n){n.classList.remove('active');});document.getElementById('p'+tab).classList.add('active');el.classList.add('active');var sw=document.querySelector('.sticky-wrap');if(sw)sw.style.display=tab==='t'?'block':'none';}
-function togCert(btn){var on=btn.classList.toggle('enrolled');btn.textContent=on?'Enrolled':'Enroll';showToast(on?'Added to plan! &#x1F4CB;':'Removed');}
-function openReset(){document.getElementById('modal').classList.add('open');}
-function closeReset(){document.getElementById('modal').classList.remove('open');}
-function doReset(){Object.keys(RT).forEach(function(d){clearInterval(RT[d]);});RT={};TS={};D.statuses={};D.timers={};D.scores={};sd();closeReset();showToast('All progress reset &#x1F504;');render();}
-function updStats(){
-  var done=0,prog=0;
-  Object.values(D.statuses).forEach(function(v){if(v==='done')done++;else if(v==='inprog')prog++;});
-  var pct=Math.round(done/70*100);
-  document.getElementById('sd').textContent=done;
-  document.getElementById('sp').textContent=prog;
-  document.getElementById('sc').textContent=pct+'%';
-  document.getElementById('pf').style.width=pct+'%';
-  document.getElementById('pl').textContent=done+' / 70';
-  var streak=0;for(var i=1;i<=70;i++){if(D.statuses[i]==='done')streak++;else break;}
-  document.getElementById('ss').textContent=streak;
-  var cp=done<14?1:done<28?2:done<42?3:done<56?4:5;
-  document.getElementById('pbadge').textContent='P'+cp+': '+PH[cp].name;
+function rstTmr(d){pauseTmr(d);TS[d]=0;D.tm[d]=0;save();var el=document.getElementById('tmr-'+d);if(el)el.textContent='00:00';var b=document.getElementById('tb-'+d);if(b){b.innerHTML='&#x25B6; Start';b.className='tbtn go';}}
+function saveScore(d){
+  var inp=document.getElementById('sinp-'+d);if(!inp)return;
+  var v=Math.min(100,Math.max(0,parseInt(inp.value)||0));
+  inp.value=v;D.sc[d]=v;save();
+  var rf=document.getElementById('srf-'+d);var rt=document.getElementById('srt-'+d);
+  var col=scoreCol(v);
+  if(rf){rf.style.width=v+'%';rf.style.background=col;}
+  if(rt){rt.style.color=col;rt.style.background=col+'15';rt.innerHTML=(v>=80?'&#x1F389;':v>=60?'&#x1F44D;':v>=40?'&#x1F4DA;':'&#x1F4AA;')+' '+v+'% &mdash; '+(v>=80?'Excellent!':v>=60?'Good!':v>=40?'Keep revising':'Need more practice');}
+  updGlobalStats();renderBanner();renderScoreReport();
+  showToast('Score '+v+'% saved! '+(v>=80?'&#x1F389;':'&#x1F4DA;'));
 }
-function bl(st){return st==='pending'?'&#x25B6; Start':st==='inprog'?'&#x2713; Mark Done':'&#x21A9; Reset';}
-function bc(st){return st==='done'?'ab done2':st==='inprog'?'ab prog':'ab go';}
+function handleAction(d,e){
+  e.stopPropagation();var st=gst(d);
+  if(st==='pending'){sst(d,'inprog');openCards[d]=true;startTmr(d);showToast('&#x23F1; Timer started! Go for it &#x1F4AA;');}
+  else if(st==='inprog'){pauseTmr(d);sst(d,'done');showToast('Day Complete! &#x1F389;');}
+  else{sst(d,'pending');showToast('Reset &#x21A9;');}
+  render();
+}
+function togCard(d){openCards[d]=!openCards[d];render();}
+function setPhase(p,btn){activePhase=p;document.querySelectorAll('.fchip').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');render();}
+function setSearch(v){srch=v.toLowerCase();render();}
+function showToast(msg){var t=document.getElementById('toast');t.innerHTML=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);}
+function switchTab(tab,el){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.nav-btn').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('panel-'+tab).classList.add('active');
+  document.getElementById('nav-'+tab).classList.add('active');
+  var cs=document.getElementById('control-strip');
+  cs.style.display=tab==='tracker'?'block':'none';
+  if(tab==='scores')renderScoreReport();
+}
+function toggleEnroll(btn){var on=btn.classList.toggle('enrolled');btn.textContent=on?'Enrolled &#x2713;':'Enroll';showToast(on?'Added to plan! &#x1F4CB;':'Removed');}
+function openModal(){document.getElementById('modal').classList.add('open');}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+function doReset(){Object.keys(RT).forEach(function(d){clearInterval(RT[d]);});RT={};TS={};D.st={};D.tm={};D.sc={};save();closeModal();showToast('All progress reset &#x1F504;');render();renderScoreReport();renderBanner();}
+
+function calcAll(){
+  var vals=Object.values(D.sc).filter(function(v){return v!=null;});
+  var overall=vals.length>0?Math.round(vals.reduce(function(a,b){return a+b;},0)/vals.length):null;
+  var ph={};
+  for(var p=1;p<=5;p++){
+    var r=PH_RANGE[p];var pv=[];
+    for(var d=r[0];d<=r[1];d++){if(D.sc[d]!=null)pv.push(D.sc[d]);}
+    ph[p]=pv.length>0?{avg:Math.round(pv.reduce(function(a,b){return a+b;},0)/pv.length),cnt:pv.length,tot:r[1]-r[0]+1}:null;
+  }
+  return{overall:overall,count:vals.length,ph:ph};
+}
+function renderBanner(){
+  var sc=calcAll();
+  document.getElementById('sb-score').textContent=sc.overall!=null?sc.overall:'--';
+  document.getElementById('sb-grade').textContent=sc.overall!=null?grade(sc.overall):'--';
+  document.getElementById('sb-bar').style.width=(sc.overall!=null?sc.overall:0)+'%';
+  document.getElementById('sb-meta').textContent=sc.count+' of 70 scored';
+}
+function renderScoreReport(){
+  var sc=calcAll();
+  document.getElementById('rp-big').innerHTML=(sc.overall!=null?sc.overall:'--')+'<span>%</span>';
+  document.getElementById('rp-grade').textContent=sc.overall!=null?grade(sc.overall):'--';
+  document.getElementById('rp-meta').textContent=sc.count>0?sc.count+' of 70 days scored':'No scores recorded yet';
+  var html='';
+  for(var p=1;p<=5;p++){
+    var ps=sc.ph[p];var avg=ps?ps.avg:0;var col=ps?scoreCol(ps.avg):'#94a3b8';
+    var r=PH_RANGE[p];
+    html+='<div class="phase-report-card">';
+    html+='<div class="prc-header"><div class="prc-name">'+PE[p]+' Phase '+p+': '+PH[p].n+'</div><div class="prc-score" style="color:'+col+'">'+(ps?ps.avg+'%':'--')+'</div></div>';
+    html+='<div class="prc-bar-track"><div class="prc-bar-fill" style="width:'+avg+'%;background:'+col+'"></div></div>';
+    html+='<div class="prc-meta"><span>'+(ps?ps.cnt+' of '+ps.tot+' scored':'No scores yet')+'</span><span>'+(ps?'Grade: '+grade(ps.avg):'')+'</span></div>';
+    html+='<div class="day-dots">';
+    for(var d=r[0];d<=r[1];d++){
+      var sv=D.sc[d];var st=gst(d);
+      var dc=sv!=null?scoreCol(sv):st==='done'?'#94a3b8':'var(--border)';
+      var db=sv!=null?scoreCol(sv)+'18':st==='done'?'rgba(148,163,184,0.1)':'var(--surface2)';
+      var dt=sv!=null?sv+'%':st==='done'?'&#x2713;':''+d;
+      html+='<div class="day-dot" style="background:'+db+';color:'+dc+';border-color:'+dc+'44" title="Day '+d+(sv!=null?' &mdash; '+sv+'%':st==='done'?' &mdash; Done':' &mdash; Pending')+'">'+dt+'</div>';
+    }
+    html+='</div></div>';
+  }
+  document.getElementById('phase-reports').innerHTML=html;
+}
+function updGlobalStats(){
+  var done=0,prog=0;
+  Object.values(D.st).forEach(function(v){if(v==='done')done++;else if(v==='inprog')prog++;});
+  var pct=Math.round(done/70*100);
+  document.getElementById('st-done').textContent=done;
+  document.getElementById('st-prog').textContent=prog;
+  document.getElementById('st-pct').textContent=pct+'%';
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-text').textContent=done+' / 70';
+  var streak=0;for(var i=1;i<=70;i++){if(D.st[i]==='done')streak++;else break;}
+  document.getElementById('st-str').textContent=streak+(streak>0?'&#x1F525;':'');
+  var cp=done<14?1:done<28?2:done<42?3:done<56?4:5;
+  document.getElementById('phase-chip').textContent='P'+cp+': '+PH[cp].n;
+}
 function render(){
-  updStats();
-  var c=document.getElementById('dc');
+  updGlobalStats();renderBanner();
+  var c=document.getElementById('day-container');
   var filtered=DAYS.filter(function(d){
     if(activePhase&&d[2]!==activePhase)return false;
-    if(searchTerm&&![d[3],d[4],d[5],d[6]].some(function(s){return s.toLowerCase().indexOf(searchTerm)>=0;}))return false;
+    if(srch&&![d[3],d[4],d[5],d[6]].some(function(s){return s.toLowerCase().indexOf(srch)>=0;}))return false;
     return true;
   });
-  if(!filtered.length){c.innerHTML='<div class="empty">No results found &#x1F50D;</div>';return;}
-  var lastPh=null;
-  var html='';
+  if(!filtered.length){c.innerHTML='<div class="empty-state">No results found &#x1F50D;</div>';return;}
+  var lastPh=null;var html='';
   for(var i=0;i<filtered.length;i++){
     var d=filtered[i];
-    var day=d[0],wk=d[1],ph=d[2],topic=d[3],theory=d[4],explore=d[5],practice=d[6];
-    var st=gst(day);
-    var isOpen=!!openSet[day];
-    var p=PH[ph];
-    var savedSec=D.timers[day]||0;
-    var curSec=TS[day]!=null?TS[day]:savedSec;
-    var score=D.scores[day];
-    if(activePhase===0&&ph!==lastPh){html+='<div class="shdr">'+PE[ph]+' Phase '+ph+': '+p.name+'</div>';lastPh=ph;}
-    var sb=score!=null?'<span class="sbadge">'+score+'%</span>':'';
-    var sr2=score!=null?('<span style="color:'+(score>=80?'var(--p2)':score>=60?'var(--p4)':'var(--p5)')+'">'+( score>=80?'&#x1F389;':score>=60?'&#x1F44D;':score>=40?'&#x1F4DA;':'&#x1F4AA;')+' '+score+'% &mdash; '+(score>=80?'Excellent!':score>=60?'Good!':score>=40?'Keep revising':'More practice needed')+'</span>'):'';
-    var tbtnCls=RT[day]?'tbtn run':(curSec>0?'tbtn':'tbtn go');
-    var tbtnTxt=RT[day]?'Pause':(curSec>0?'Resume':'Start');
-    html+='<div class="dc '+st+'">';
-    html+='<div class="dh" onclick="togOpen('+day+')">';
-    html+='<div class="dn" style="background:'+p.bg+';color:'+p.col+'">'+day+'</div>';
-    html+='<div class="di"><div class="dt">'+topic+'</div><div class="dm">Wk '+wk+' <span class="pp" style="background:'+p.bg+';color:'+p.col+'">'+p.name+'</span>'+sb+'</div></div>';
-    html+='<div class="dr"><div class="sr '+st+'">'+(st==='done'?'&#x2713;':st==='inprog'?'&hellip;':'')+'</div><div class="chv'+(isOpen?' open':'')+'">&#x25BE;</div></div>';
+    var day=d[0],wk=d[1],ph=d[2],topic=d[3],theory=d[4],explore=d[5],practice=d[6],sources=d[7]||[];
+    var st=gst(day);var isOpen=!!openCards[day];var p=PH[ph];
+    var savedSec=D.tm[day]||0;var curSec=TS[day]!=null?TS[day]:savedSec;
+    var sc=D.sc[day];
+    if(activePhase===0&&ph!==lastPh){html+='<div class="section-rule">'+PE[ph]+' Phase '+ph+' &mdash; '+p.n+'</div>';lastPh=ph;}
+    var scTag=sc!=null?('<span class="score-tag" style="background:'+scoreCol(sc)+'18;color:'+scoreCol(sc)+';border:1px solid '+scoreCol(sc)+'33">'+sc+'%</span>'):'';
+    var tbCls=RT[day]?'tbtn run':(curSec>0?'tbtn':'tbtn go');
+    var tbTxt=RT[day]?'&#x23F8; Pause':(curSec>0?'&#x25B6; Resume':'&#x25B6; Start');
+    var actionCls=st==='pending'?'main-action-btn btn-start':st==='inprog'?'main-action-btn btn-done':'main-action-btn btn-reset';
+    var actionTxt=st==='pending'?'&#x25B6; Start Topic':st==='inprog'?'&#x2713; Mark Complete':'&#x21A9; Reset';
+    var srHtml='';
+    if(sc!=null){var col=scoreCol(sc);srHtml='<div class="score-result-text" id="srt-'+day+'" style="color:'+col+';background:'+col+'15">'+(sc>=80?'&#x1F389;':sc>=60?'&#x1F44D;':sc>=40?'&#x1F4DA;':'&#x1F4AA;')+' '+sc+'% &mdash; '+(sc>=80?'Excellent!':sc>=60?'Good!':sc>=40?'Keep revising':'Need more practice')+'</div>';}
+    else{srHtml='<div class="score-result-text" id="srt-'+day+'" style="color:var(--muted)"></div>';}
+    // Sources HTML
+    var srcHtml='';
+    if(sources.length>0){
+      srcHtml='<div class="sources-section"><div class="sources-title">&#x1F517; Study Sources</div><div class="source-links">';
+      for(var s=0;s<sources.length;s++){
+        var src=sources[s];var sname=src[0];var surl=src[1];var stype=src[2];
+        var typeLabel=stype==='video'?'&#x1F3A5; Video':stype==='docs'?'&#x1F4D8; Docs':'&#x1F4F0; Article';
+        var typeCls='source-type-badge type-'+stype;
+        srcHtml+='<a class="source-link" href="'+surl+'" target="_blank" rel="noopener noreferrer"><span class="'+typeCls+'">'+typeLabel+'</span><span class="source-name">'+sname+'</span><span class="source-arrow">&#x2192;</span></a>';
+      }
+      srcHtml+='</div></div>';
+    }
+    html+='<div class="dcard '+st+'">';
+    // Card top
+    html+='<div class="dcard-top" onclick="togCard('+day+')">';
+    html+='<div class="day-badge" style="background:'+p.b+';color:'+p.c+'"><div class="day-badge-num">'+day+'</div><div class="day-badge-lbl">Day</div></div>';
+    html+='<div class="dcard-info"><div class="dcard-topic">'+topic+'</div><div class="dcard-meta"><span class="meta-week">Wk '+wk+'</span><span class="phase-tag" style="background:'+p.b+';color:'+p.c+'">'+p.n+'</span>'+scTag+'</div></div>';
+    html+='<div class="dcard-right"><div class="status-icon '+st+'">'+(st==='done'?'&#x2713;':st==='inprog'?'&#x25CF;':'')+'</div><div class="expand-icon'+(isOpen?' open':'')+'">&#x25BE;</div></div>';
     html+='</div>';
+    // Card body
     if(isOpen){
-      html+='<div class="db open">';
-      html+='<div class="tgrid">';
+      html+='<div class="dcard-body open">';
+      // Tasks
+      html+='<div class="task-section">';
       var tasks=[theory,explore,practice];
       for(var j=0;j<3;j++){
-        html+='<div class="ti"><div class="ticon" style="background:'+TB[j]+'">'+TI[j]+'</div><div><div class="ttype">'+TT[j]+'<span class="tmins">&middot; '+TM[j]+'</span></div><div class="ttxt">'+tasks[j]+'</div></div></div>';
+        html+='<div class="task-row"><div class="task-ico" style="background:'+TB[j]+'">'+TI[j]+'</div>';
+        html+='<div class="task-content"><div class="task-label">'+TT[j]+' <span class="task-mins-badge">'+TM[j]+'</span></div>';
+        html+='<div class="task-text">'+tasks[j]+'</div></div></div>';
       }
       html+='</div>';
-      html+='<div class="tmr"><div><div class="tdisp" id="tmr-'+day+'">'+fmt(curSec)+'</div><div class="tlbl">Study time recorded</div></div><div class="tctrl"><button class="'+tbtnCls+'" id="tb-'+day+'" onclick="togTmr('+day+');event.stopPropagation()">'+tbtnTxt+'</button><button class="tbtn" onclick="rstTmr('+day+');event.stopPropagation()">&#x21BA;</button></div></div>';
-      html+='<div class="ssec"><div class="stit">&#x1F4DD; Self-Test Score</div><div class="sirow"><input class="sinp2" id="si-'+day+'" type="number" min="0" max="100" placeholder="0-100" value="'+(score!=null?score:'')+'" onclick="event.stopPropagation()"><span class="spct">%</span><button class="ssbtn" onclick="saveSc('+day+');event.stopPropagation()">Save</button></div><div class="sres" id="sr-'+day+'">'+sr2+'</div></div>';
-      html+='<div class="arow"><button class="'+bc(st)+'" onclick="handleStart('+day+',event)">'+bl(st)+'</button></div>';
+      // Sources
+      html+=srcHtml;
+      // Timer + Score + Action
+      html+='<div class="action-section">';
+      html+='<div class="timer-card"><div><div class="timer-display" id="tmr-'+day+'">'+fmt(curSec)+'</div><div class="timer-lbl">Study Time</div></div><div class="timer-btns"><button class="'+tbCls+'" id="tb-'+day+'" onclick="togTmr('+day+');event.stopPropagation()">'+tbTxt+'</button><button class="tbtn" onclick="rstTmr('+day+');event.stopPropagation()">&#x21BA;</button></div></div>';
+      html+='<div class="score-card"><div class="score-label">&#x1F4DD; Self-Test Score</div><div class="score-input-row"><input class="score-number-inp" id="sinp-'+day+'" type="number" min="0" max="100" placeholder="0-100" value="'+(sc!=null?sc:'')+'" onclick="event.stopPropagation()"><span class="score-pct-sym">%</span><button class="score-save-btn" onclick="saveScore('+day+');event.stopPropagation()">Save Score</button></div>';
+      html+='<div class="score-result-bar"><div class="score-result-track"><div class="score-result-fill" id="srf-'+day+'" style="width:'+(sc!=null?sc:0)+'%;background:'+(sc!=null?scoreCol(sc):'var(--border)')+'"></div></div>'+srHtml+'</div></div>';
+      html+='<button class="'+actionCls+'" onclick="handleAction('+day+',event)">'+actionTxt+'</button>';
       html+='</div>';
-    }else{
-      html+='<div class="db"></div>';
-    }
+      html+='</div>';
+    }else{html+='<div class="dcard-body"></div>';}
     html+='</div>';
   }
   c.innerHTML=html;
 }
-render();
-// Fix sticky-wrap top to match actual header height
-function fixSticky(){
-  var hdr=document.querySelector('.header');
-  var sw=document.querySelector('.sticky-wrap');
-  if(hdr&&sw){sw.style.top=hdr.offsetHeight+'px';}
-}
-fixSticky();
-window.addEventListener('resize',fixSticky);
+// Sticky positioning
+function fixSticky(){var mast=document.querySelector('.masthead');var cs=document.getElementById('control-strip');if(mast&&cs)cs.style.top=mast.offsetHeight+'px';}
+fixSticky();window.addEventListener('resize',fixSticky);
+render();renderBanner();
 </script>
 </body>
 </html>
